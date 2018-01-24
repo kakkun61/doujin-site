@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "遠回りして学ぶ Yesod 入門（上）"
+title:  "遠回りして学ぶ Yesod 入門"
 date:   2018-01-24 09:47:46 +0900
 categories: jekyll update
-permalink: "/introduction-yesod-1"
-book_image: "/assets/introduction-yesod-1-front.png"
+permalink: "/introduction-yesod"
+book_image: "/assets/introduction-yesod-front.jpg"
 release_date: 2018-04-20
-events: "技術書典 1"
+events: 
+  - C91 
+  - 技術書典 2
 price_event_paper: 1000
 price_event_ebook: 800
 price_online_ebook: 1000
