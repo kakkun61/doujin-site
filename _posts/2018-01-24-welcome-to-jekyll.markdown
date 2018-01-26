@@ -1,32 +1,22 @@
 ---
-layout: post
+layout: book
 title:  "遠回りして学ぶ Yesod 入門（上）"
 date:   2018-01-24 09:47:46 +0900
-categories: jekyll update
 permalink: "/introduction-yesod-1"
 book_image: "/assets/introduction-yesod-1-front.png"
 release_date: 2018-04-20
-events: "技術書典 1"
-price_event_paper: 1000
-price_event_ebook: 800
-price_online_ebook: 1000
+events:
+  - title: 技術書典 1
+    date: 2016-06-25
+    place: 秋葉原通運会館
+    table: A-34
+price:
+  event_paper: 1000
+  event_ebook: 800
+  online_ebook: 1000
+authors: 
+  - name: 岡本和樹
+    twitter: kakkun61
+sample: https://goo.gl/Tnb75Q
+online_sell: https://kakkun61.booth.pm/items/278333
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/

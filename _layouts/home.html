@@ -19,7 +19,7 @@ layout: default
           </h3>
           <div class="event-badges">
             {% for event in post.events %}
-              <span class="event-badge">{{ event }}</span>
+              <span class="event-badge">{{ event.title }}</span>
             {% endfor %}
           </div>
           <div class="book-front"><img src="{{ site.baseurl }}{{ post.book_image }}" alt="book image" /></div>
