@@ -3,6 +3,11 @@ layout: book
 title:  "遠回りして学ぶ Yesod 入門（上）"
 date:   2018-01-24 09:47:46 +0900
 permalink: "/introduction-yesod-1"
+
+# SEO
+description: ""
+image: "/assets/introduction-yesod-1-front.png"
+
 book_image: "/assets/introduction-yesod-1-front.png"
 release_date: 2018-04-20
 events:

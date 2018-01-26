@@ -4,6 +4,11 @@ title:  "遠回りして学ぶ Yesod 入門"
 date:   2018-01-24 09:47:46 +0900
 categories: jekyll update
 permalink: "/introduction-yesod"
+
+# SEO
+description: ""
+image: "/assets/introduction-yesod-front.png"
+
 book_image: "/assets/introduction-yesod-front.png"
 release_date: 2018-04-20
 events: 
