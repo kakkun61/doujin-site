@@ -4,20 +4,44 @@
 
 @import "minima";
 
-.post-list {
-  display: flex;
-  flex-flow: row wrap;
+.book-list {
+    margin-left: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-.post-list > li {
+.book-list > li {
+    display: flex;
+    flex-flow: column;
     width: 300px;
-    margin: 30px;
+    margin: 10px;
+    padding: 20px;
+    background-color: hsla(0,0%,100%,0.5);
+    border-radius: 13px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-.book-front > img {
-    width: 300px;
+.book-list > li > h3 {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+.justify-bottom {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+img.book-front {
+    display: block;
+    width: 100%;
     height: auto;
-    margin-bottom: 15px;
 }
 
 .event-badge {
@@ -25,9 +49,14 @@
     border-color: slategray;
     border-radius: 0.3em;
     padding: 3px 5px;
-    background-color: rgb(255, 228, 198);
+    background-color: hsl(0, 1%, 33%);
+    color: white;
 }
 
 .event-badges {
     margin-bottom: 15px;
+}
+
+body {
+    background: url(http://pbs.twimg.com/profile_background_images/121762700/twitter-bg2.png) repeat fixed 0 0;
 }
