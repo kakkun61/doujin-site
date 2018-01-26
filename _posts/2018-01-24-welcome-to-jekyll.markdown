@@ -5,7 +5,7 @@ date:   2018-01-24 09:47:46 +0900
 permalink: "/introduction-yesod-1"
 
 # SEO
-description: ""
+description: "入門書程度の内容の Haskell を理解した人がウェブアプリケーションを作れるようになる手助けをする本です。"
 image: "/assets/introduction-yesod-1-front.png"
 
 book_image: "/assets/introduction-yesod-1-front.png"

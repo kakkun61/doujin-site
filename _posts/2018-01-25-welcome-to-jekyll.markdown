@@ -6,7 +6,7 @@ categories: jekyll update
 permalink: "/introduction-yesod"
 
 # SEO
-description: ""
+description: "入門書程度の内容の Haskell を理解した人がウェブアプリケーションフレームワーク Yesod を使うときに手助けになるような内容です。"
 image: "/assets/introduction-yesod-front.png"
 
 book_image: "/assets/introduction-yesod-front.png"
