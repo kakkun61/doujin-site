@@ -1,4 +1,5 @@
 <footer>
   <a href="{{ "/feed.xml" | relative_url }}">RSS</a> |
-  <a href="{{ "/about.xml" | relative_url }}">About</a>
+  {% assign about = site.pages | where: "permalink", "/about" | first %}
+  <a href="{{ "/about" | relative_url }}">{{ about.title }}</a>
 </footer>

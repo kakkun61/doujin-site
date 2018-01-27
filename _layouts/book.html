@@ -27,7 +27,7 @@ layout: default
           {% for author in page.authors %}
             <li>
               {{ author.name }}
-              <a href="https://twitter.com/{{ author.twitter }}">{{ author.twitter }}</a>
+              <a href="https://twitter.com/{{ author.twitter }}"> <span class="twitter-icon"></span>@{{ author.twitter }}</a>
             </li>
           {% endfor %}
         </ul>

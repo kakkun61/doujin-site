@@ -4,7 +4,7 @@
 
 @import "minima";
 
-@import "home", "book", "footer";
+@import "home", "book", "header", "footer";
 
 body {
     background: url(http://pbs.twimg.com/profile_background_images/121762700/twitter-bg2.png) repeat fixed 0 0;
@@ -38,4 +38,13 @@ body {
     &:active {
         box-shadow: inset 0 0 3px rgba(0,0,0,0.8);
     }
+}
+
+.twitter-icon {
+    display: inline-block;
+    vertical-align: bottom;
+    height: 1.7em;
+    width: 1.7em;
+    margin-bottom: -0.15em;
+    background: url("{{ site.twitter_icon | relative_url }}");
 }

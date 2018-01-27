@@ -31,6 +31,8 @@ social:
 # google_site_verification: ""
 lang: ja_JP
 
+twitter_icon: /assets/Twitter_Logo_Blue.svg
+
 # Build settings
 markdown: kramdown
 #theme: minima
