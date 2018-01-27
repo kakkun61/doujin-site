@@ -3,19 +3,47 @@
     list-style: none;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
-    margin: 0;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @media (min-width: 400px) {
+        margin-left: 17.5px;
+        margin-right: 17.5px;
+    }
+
+    @media (min-width: 340px) and (max-width: 400px) {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .book-list > li {
     display: flex;
     flex-flow: column;
-    width: 300px;
-    margin: 10px;
     padding: 20px;
     background-color: hsla(0,0%,100%,0.5);
     border-radius: 13px;
+    margin: 12.5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+    @media (min-width: 400px) {
+        width: 300px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+
+    @media (min-width: 350px) and (max-width: 400px) {
+        width: 300px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    @media (max-width: 350px) {
+        width: auto;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
 .book-list > li > h3 {
@@ -34,7 +62,7 @@
     height: 100%;
 }
 
-img.book-front {
+img.home-book-front {
     display: block;
     width: 100%;
     height: auto;
