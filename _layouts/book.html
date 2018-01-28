@@ -16,7 +16,7 @@ layout: default
           {% for event in page.events %}
             <span class="event-badge">{{ event.title }}</span>
             <ul>
-              <li>{{ event.date }}</li>
+              <li>{{ event.date | date: "%Y.%m.%d" }}</li>
               <li>{{ event.place }}</li>
               <li>{{ event.table }}</li>
             </ul>

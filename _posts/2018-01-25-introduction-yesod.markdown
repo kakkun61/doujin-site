@@ -10,14 +10,14 @@ description: "入門書程度の内容の Haskell を理解した人がウェブ
 image: "/assets/introduction-yesod-front.png"
 
 book_image: "/assets/introduction-yesod-front.png"
-release_date: 2018-04-20
+release_date: 2016-12-29
 events: 
   - title: C91
-    date: 2016-12-29
+    date: 2016-12-29 10:00:00 +0900
     place: 東京ビッグサイト
     table: 西み-26a
   - title: 技術書典 2
-    date: 2017-04-09
+    date: 2017-04-09 11:00:00 +0900
     place: アキバスクエア
     table: う-04
 price:

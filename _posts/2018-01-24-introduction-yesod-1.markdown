@@ -9,10 +9,10 @@ description: "入門書程度の内容の Haskell を理解した人がウェブ
 image: "/assets/introduction-yesod-1-front.png"
 
 book_image: "/assets/introduction-yesod-1-front.png"
-release_date: 2018-04-20
+release_date: 2016-06-25 11:00:00 +0900
 events:
   - title: 技術書典 1
-    date: 2016-06-25
+    date: 2016-06-25 11:00:00 +0900
     place: 秋葉原通運会館
     table: A-34
 price:
