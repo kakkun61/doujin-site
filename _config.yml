@@ -18,7 +18,7 @@ title: 趣味はデバッグ……
 description: >- # this means to ignore newlines until "baseurl:"
   岡本和樹（kakkun61）が主宰する同人サークル「趣味はデバッグ……」の WWW サイトです。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://doujin.kakkun61.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # SEO
 twitter:
