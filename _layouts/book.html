@@ -41,8 +41,12 @@ layout: default
         </table>
 
         <div class="book-actions">
-          <a class="button" href="{{ page.sample }}">サンプル PDF</a>
-          <a class="button" href="{{ page.online_sell }}">オンライン販売</a>
+          {% if page.sample %}
+            <a class="button" href="{{ page.sample }}">サンプル PDF</a>
+          {% endif %}
+          {% if page.online_sell %}
+            <a class="button" href="{{ page.online_sell }}">オンライン販売</a>
+          {% endif %}
         </div>
       </div>
     </div>
