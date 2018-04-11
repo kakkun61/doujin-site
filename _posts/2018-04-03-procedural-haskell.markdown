@@ -9,10 +9,10 @@ description: "Haskell の手続きプログラミングの側面について解�
 image: "/assets/under-construction.png"
 
 book_image: "/assets/under-construction.png"
-release_date: 2016-12-29
+release_date: 2018-04-22
 events: 
   - title: 技術書典 4
-    date: 2017-04-22 11:00:00 +0900
+    date: 2018-04-22 11:00:00 +0900
     place: アキバスクエア
     table: き34
 price:
