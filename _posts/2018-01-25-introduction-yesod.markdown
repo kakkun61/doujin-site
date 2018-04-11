@@ -20,6 +20,10 @@ events:
     date: 2017-04-09 11:00:00 +0900
     place: アキバスクエア
     table: う-04
+  - title: 技術書典 4
+    date: 2018-04-22 11:00:00 +0900
+    place: アキバスクエア
+    table: き34
 price:
   event_paper: 1000
   event_ebook: 800
