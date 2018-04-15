@@ -70,7 +70,7 @@ img.book-front {
     }
 
     @media (max-width: 730px) {
-        width: auto;
+        width: 100%;
         margin-top: 20px;
     }
 }
@@ -115,4 +115,21 @@ img.book-front {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+}
+
+.content {
+    margin-top: 25px;
+
+    @media (min-width: 1000px) {
+        width: 890px;
+    }
+
+    @media (min-width: 730px) and (max-width: 1000px) {
+        width: calc(100vw - 435px + 325px);
+    }
+
+    @media (max-width: 730px) {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
