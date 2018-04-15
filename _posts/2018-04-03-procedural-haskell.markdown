@@ -6,9 +6,9 @@ permalink: "/procedural-haskell"
 
 # SEO
 description: "Haskell の手続きプログラミングの側面について解説した本です。"
-image: "/assets/procedural-haskell.png"
+image: "/assets/procedural-haskell.jpg"
 
-book_image: "/assets/procedural-haskell.png"
+book_image: "/assets/procedural-haskell.jpg"
 release_date: 2018-04-22
 events: 
   - title: 技術書典 4
