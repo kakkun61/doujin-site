@@ -23,7 +23,7 @@ authors:
   - name: 岡本和樹
     twitter: kakkun61
 #sample: https://drive.google.com/file/d/0B5_LxwAFlmxXVXFSNUJyVncxcVU/
-#online_sell: https://kakkun61.booth.pm/items/398785
+online_sell: https://kakkun61.booth.pm/items/829369
 ---
 <h2>対象読者</h2>
 <ul>
