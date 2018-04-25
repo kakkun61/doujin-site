@@ -1,5 +1,5 @@
 serve:
-	jekyll serve --baseurl ''
+	bundle exec jekyll serve --baseurl ''
 
 build:
-	jekyll build -d ../doujin-site-gh-pages/
+	bundle exec jekyll build -d ../doujin-site-gh-pages/
