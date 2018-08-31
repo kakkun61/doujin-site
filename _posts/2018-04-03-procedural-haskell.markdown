@@ -18,7 +18,7 @@ events:
 price:
   event_paper: 1000
   event_ebook: 800
-  online_ebook: 1000
+  online_ebook: 700
 authors: 
   - name: 岡本和樹
     twitter: kakkun61
