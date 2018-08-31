@@ -33,6 +33,5 @@ authors:
     twitter: kakkun61
   - name: syocy
     twitter: syocy
-sample: https://drive.google.com/file/d/0B5_LxwAFlmxXVXFSNUJyVncxcVU/
-online_sell: https://kakkun61.booth.pm/items/398785
+online_sell: https://nextpublishing.jp/book/9979.html
 ---

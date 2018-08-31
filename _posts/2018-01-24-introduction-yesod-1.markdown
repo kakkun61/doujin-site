@@ -22,6 +22,5 @@ price:
 authors: 
   - name: 岡本和樹
     twitter: kakkun61
-sample: https://goo.gl/Tnb75Q
-online_sell: https://kakkun61.booth.pm/items/278333
+online_sell: https://nextpublishing.jp/book/9979.html
 ---
