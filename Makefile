@@ -3,3 +3,6 @@ serve:
 
 build:
 	bundle exec jekyll build -d ../doujin-site-gh-pages/
+
+update:
+	sudo bundle update
