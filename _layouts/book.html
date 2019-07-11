@@ -27,16 +27,27 @@ layout: default
           {% for author in page.authors %}
             <li>
               {{ author.name }}
-              <a href="https://twitter.com/{{ author.twitter }}"> <span class="twitter-icon"></span>@{{ author.twitter }}</a>
+              {% if author.twitter %}
+                <a href="https://twitter.com/{{ author.twitter }}"> <span class="twitter-icon"></span>@{{ author.twitter }}</a>
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
 
         <table class="book-price">
           <tbody>
-            <tr><td>紙＋電子（即売会）</td><td class="price">¥{{ page.price.event_paper }}</td></tr>
-            <tr><td>電子（即売会）</td><td class="price">¥{{ page.price.event_ebook }}</td></tr>
-            <tr><td>電子（オンライン）</td><td class="price">¥{{ page.price.online_ebook }}</td></tr>
+            {% if page.price.event_paper %}
+              <tr><td>紙＋電子（即売会）</td><td class="price">¥{{ page.price.event_paper }}</td></tr>
+            {% endif %}
+            {% if page.price.event_ebook %}
+              <tr><td>電子（即売会）</td><td class="price">¥{{ page.price.event_ebook }}</td></tr>
+            {% endif %}
+            {% if page.price.online_paper %}
+              <tr><td>紙（オンライン）</td><td class="price">¥{{ page.price.online_paper }}</td></tr>
+            {% endif %}
+            {% if page.price.online_ebook %}
+              <tr><td>電子（オンライン）</td><td class="price">¥{{ page.price.online_ebook }}</td></tr>
+            {% endif %}
           </tbody>
         </table>
 
