@@ -1,3 +1,7 @@
+setup:
+	gem install bundler
+	bundle install
+
 serve:
 	bundle exec jekyll serve --baseurl ''
 
