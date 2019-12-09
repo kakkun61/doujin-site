@@ -20,11 +20,11 @@ layout: default
             <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
           </h3>
           <div class="justify-bottom">
-            <div class="event-badges">
+            <ul class="event-badges">
               {% for event in post.events %}
-                <span class="event-badge">{{ event.title }}</span>
+                <li class="event-badge">{{ event.title }}</li>
               {% endfor %}
-            </div>
+            </ul>
             <a href="{{ post.url | relative_url }}"><img src="{{ site.baseurl }}{{ post.book_image }}" alt="book image" class="home-book-front"/></a>
           </div>
         </li>
