@@ -23,6 +23,10 @@ events:
     date: 2019-04-14 11:00:00 +0900
     place: 池袋サンシャインシティ
     table: こ13
+  - title: 技術書典 7
+    date: 2019-09-22 11:00:00 +0900
+    place: 池袋サンシャインシティ
+    table: し02D
 price:
   event_paper: 500
   event_ebook: 300
