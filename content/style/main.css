@@ -1,0 +1,53 @@
+body {
+  background: url("/background.png") repeat fixed 0 0;
+}
+
+.button {
+  display: block;
+  padding: 5px 10px;
+  margin: 3px;
+
+  border-style: solid;
+  border-color: hsl(209, 92%, 35%);
+  border-width: 1px;
+  border-radius: 3px;
+
+  background-color: hsl(209, 76%, 49%);
+  color: white;
+  text-align: center;
+}
+
+.button:visited {
+    color:rgb(236, 236, 236);
+}
+
+.button:hover, .button:focus {
+    text-decoration: none;
+    background-color: hsla(209, 77%, 49%, 0.8);
+    color: white;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.button:active {
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.8);
+}
+
+.twitter-icon {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 1.7em;
+  width: 1.7em;
+  margin-bottom: -0.15em;
+  background: url("/Twitter_Logo_Blue.svg");
+}
+
+/* override minima */
+@media screen and (max-width: 600px) {
+    .site-nav {
+      background-color: #fdfdfd79;
+    }
+}
+
+pre {
+    background-color: hsla(0, 0%, 100%, 0.5);
+}

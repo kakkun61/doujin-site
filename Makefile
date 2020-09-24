@@ -1,12 +1,34 @@
-setup:
-	gem install bundler
-	bundle install
+PWSH = pwsh
+SERVE = warp -d
 
-serve:
-	bundle exec jekyll serve --baseurl ''
+.PHONY: generate
+generate: build
+	cabal exec -- gen
 
+.PHONY: build
 build:
-	bundle exec jekyll build -d ../doujin-site-gh-pages/
+	cabal build .
 
-update:
-	sudo bundle update
+.PHONY: lint
+lint:
+	stack exec -- hlint app content
+
+.PHONY: format
+format:
+	$(PWSH) -Command '& { Get-ChildItem -Path app, content -Include *.hs -Recurse | ForEach-Object { stylish-haskell --inplace $$_ } }'
+
+.PHONY: serve
+serve: generate
+	$(SERVE) out
+
+.PHONY: clean
+clean: clean-content
+	cabal clean
+
+.PHONY: clean-content
+clean-content:
+	$(PWSH) -Command '& { Remove-Item -Path out -Recurse -Force }'
+
+.PHONY: targets
+targets:
+	$(PWSH) -Command "& { Get-Content .\Makefile | Where-Object { $$_ -like '.PHONY*' } | ForEach-Object { $$_.Substring(8) } }"
