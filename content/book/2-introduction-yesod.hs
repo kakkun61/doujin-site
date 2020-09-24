@@ -5,20 +5,31 @@ import qualified Layout as L
 
 import Lucid
 
-render _ = do
-  L.top $ L.book book (Just content)
+render path = do
+  L.top (L.ogp ogp) $ L.book book (Just content)
   pure book
   where
+    ogp =
+      Ogp
+        title
+        Article
+        (L.siteUrl <> image)
+        (L.siteUrl <> "/" <> path)
+        (Just description)
+        (Just "ja_JP")
     book =
       Book
-        "遠回りして学ぶ Yesod 入門"
-        "/introduction-yesod-front.png"
-        "入門書程度の内容の Haskell を理解した人がウェブアプリケーションフレームワーク Yesod を使うときに手助けになるような内容です。"
+        title
+        image
+        description
         events
         authors
         price
         Nothing
         Nothing
+    title = "遠回りして学ぶ Yesod 入門"
+    image = "/introduction-yesod-front.png"
+    description = "入門書程度の内容の Haskell を理解した人がウェブアプリケーションフレームワーク Yesod を使うときに手助けになるような内容です。"
     events =
       [ Event "C91" "2016.12.29" "東京ビッグサイト" "西み-26a"
       , Event "技術書典 2" "2017.04.09" "アキバスクエア" "う-04"

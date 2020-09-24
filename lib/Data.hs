@@ -5,6 +5,8 @@ module Data
   , Event (..)
   , Author (..)
   , Price (..)
+  , Ogp (..)
+  , OgpType (..)
   ) where
 
 import Data.Text (Text)
@@ -47,3 +49,23 @@ data Price =
     , onlineEbook :: Maybe Word
     }
   deriving Show
+
+-- https://ogp.me/
+data Ogp =
+  Ogp
+    { title :: Text
+    , typ :: OgpType
+    , image :: Text
+    , url :: Text
+    , description :: Maybe Text
+    , locale :: Maybe Text
+    }
+  deriving Show
+
+data OgpType
+  = Website
+  | Article
+
+instance Show OgpType where
+  show Website = "website"
+  show Article = "article"

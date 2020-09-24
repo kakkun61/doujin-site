@@ -37,13 +37,13 @@ action = do
   images
 
 index :: [(Book, FilePath)] -> Shake.Action ()
-index = lucid "index.hs" "index.html"
+index books = lucid "index.hs" "index.html" ("index.html", books)
 
 about :: Shake.Action ()
-about = lucid "about.hs" "about.html" ()
+about = lucid "about.hs" "about.html" "about.html"
 
 credit :: Shake.Action ()
-credit = lucid "credit.hs" "credit.html" ()
+credit = lucid "credit.hs" "credit.html" "credit.html"
 
 books :: Shake.Action [(Book, FilePath)]
 books = do
@@ -52,7 +52,7 @@ books = do
 
 book :: FilePath -> Shake.Action (Book, FilePath)
 book path = do
-  b <- lucid ("book" </> path) dest ()
+  b <- lucid ("book" </> path) dest dest
   pure (b, dest)
   where
     dest = path' -<.> "html"

@@ -1,12 +1,22 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+import           Data
 import qualified Layout as L
 
 import Lucid
 
-render _ =
-  L.top $ L.page "オープンソースライブラリー" content
+render path =
+  L.top (L.ogp ogp) $ L.page title content
   where
+    ogp =
+      Ogp
+        title
+        Article
+        (L.siteUrl <> "/favicon.ico")
+        (L.siteUrl <> "/" <> path)
+        Nothing
+        (Just "ja_JP")
+    title = "オープンソースライブラリー"
     content = do
       h2_ "minima"
       pre_ "The MIT License (MIT)\

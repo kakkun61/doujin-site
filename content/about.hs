@@ -1,13 +1,23 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings     #-}
 
+import           Data
 import qualified Layout as L
 
 import Lucid
 
-render _ =
-  L.top $ L.page "「趣味はデバッグ……」とは" content
+render path =
+  L.top (L.ogp ogp) $ L.page title content
   where
+    ogp =
+      Ogp
+        title
+        Article
+        (L.siteUrl <> "/favicon.ico")
+        (L.siteUrl <> "/" <> path)
+        Nothing
+        (Just "ja_JP")
+    title = "「趣味はデバッグ……」とは"
     content = do
       p_ "岡本和樹の主宰する同人サークルで、Haskell の技術書を技術書典に向けて制作しています。"
       h2_ "参加したことのあるメンバー"

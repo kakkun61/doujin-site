@@ -11,12 +11,16 @@ import qualified Data.Foldable as F
 import           Data.String   (IsString (fromString))
 import           Data.Text     (Text)
 import           Lucid
+import qualified Lucid.Base    as Lucid
 
 siteName :: IsString s => s
 siteName = "趣味はデバッグ……"
 
-top :: Html () -> Html ()
-top c = do
+siteUrl :: Text
+siteUrl = "https://doujin.kakkun61.com"
+
+top :: Html () -> Html () -> Html ()
+top head content = do
   doctype_
   html_ [lang_ "ja"] $ do
     head_ $ do
@@ -24,7 +28,8 @@ top c = do
       meta_ [httpEquiv_ "X-UA-Compatible", content_ "IE=edge"]
       meta_ [name_ "viewport", content_ "width=device-width, initial-scale=1"]
       link_ [rel_ "stylesheet", href_ "/style.css"]
-      link_ [rel_ "alternate", type_ "application/rss+xml", title_ siteName, href_ "/feed.xml"]
+      -- link_ [rel_ "alternate", type_ "application/rss+xml", title_ siteName, href_ "/feed.xml"]
+      head
     body_ $ do
       header_ [class_ "site-header", role_ "banner"] $ do
         div_ [class_ "header-wrapper"] $ do
@@ -45,7 +50,7 @@ top c = do
               -- a_ [class_ "page-link", href_ "/feed.xml"] "RSS"
 
       main_ [class_ "page-content"] $ do
-        div_ [class_ "wrapper"] c
+        div_ [class_ "wrapper"] content
 
       footer_ $ do
         "Powered by "
@@ -129,6 +134,18 @@ page title content = do
       h1_ [class_ "book-title"] $ toHtml title
       div_ [style_ "margin: 20px;"] content
 
+ogp :: Ogp -> Html ()
+ogp Ogp { title, typ, image, url, description, locale } = do
+  meta_ [property_ "og:title", content_ title]
+  meta_ [property_ "og:type", content_ $ fromString $ show typ]
+  meta_ [property_ "og:image", content_ image]
+  meta_ [property_ "og:rul", content_ url]
+  whenJust description $ \description -> meta_ [property_ "og:description", content_ description]
+  whenJust locale $ \locale -> meta_ [property_ "og:locale", content_ locale]
+
 whenJust :: Applicative m => Maybe a -> (a -> m ()) -> m ()
 whenJust Nothing _  = pure ()
 whenJust (Just a) f = f a
+
+property_ :: Text -> Attribute
+property_ = Lucid.makeAttribute "property"

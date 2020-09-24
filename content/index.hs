@@ -8,11 +8,10 @@ import qualified Layout as L
 import Data.Foldable as F
 import Lucid
 
-render books =
-  L.top content
-  where
-    content =
-      div_ [class_ "home"] $ do
+render (path, books) =
+  L.top
+    (L.ogp ogp)
+    $ div_ [class_ "home"] $ do
         ul_ [class_ "book-list"] $ do
           F.for_ books $ \(Book { title, bookImage, events }, path) -> do
             li_ $ do
@@ -24,5 +23,14 @@ render books =
                     li_ [class_ "event-badge"] $ toHtml title
                     " "
                 a_ [href_ path] $ img_ [src_ bookImage, alt_ "book image", class_ "home-book-front"]
+  where
+    ogp =
+      Ogp
+        L.siteName
+        Website
+        (L.siteUrl <> "/favicon.ico")
+        (L.siteUrl <> "/" <> path)
+        Nothing
+        (Just "ja_JP")
 
 main = undefined
