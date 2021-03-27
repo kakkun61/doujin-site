@@ -64,7 +64,7 @@ top head content = do
 
 book :: Book -> Maybe (Html ()) -> Html ()
 book Book { title, bookImage, description, events, authors, price, sample, onlineSell } content = do
-  article_ [class_ "book"] $ do
+  article_ [class_ "page"] $ do
 
     div_ $ do
       h1_ [class_ "book-title"] $ toHtml title
@@ -129,9 +129,9 @@ book Book { title, bookImage, description, events, authors, price, sample, onlin
 
 page :: Text -> Html () -> Html ()
 page title content = do
-  article_ [class_ "book"] $ do
+  article_ [class_ "page"] $ do
     div_ $ do
-      h1_ [class_ "book-title"] $ toHtml title
+      h1_ [class_ "page-title"] $ toHtml title
       div_ [style_ "margin: 20px;"] content
 
 ogp :: Ogp -> Html ()
