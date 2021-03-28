@@ -14,15 +14,14 @@ import Data.Text (Text)
 data Book =
   Book
     { title       :: Text
-    , bookImage   :: Text
+    , image       :: Text
     , description :: Text
-    , events      :: [Event]
     , authors     :: [Author]
     , price       :: Price
     , sample      :: Maybe Text
     , onlineSell  :: Maybe Text
     }
-  deriving Show
+  deriving (Show, Eq, Ord)
 
 data Event =
   Event
@@ -31,34 +30,34 @@ data Event =
     , place :: Text
     , table :: Text
     }
-  deriving Show
+  deriving (Show, Eq, Ord)
 
 data Author =
   Author
     { name    :: Text
     , twitter :: Maybe String
     }
-  deriving Show
+  deriving (Show, Eq, Ord)
 
 data Price =
   Price
-    { eventPaper  :: Maybe Word
-    , eventEbook  :: Maybe Word
+    { eventPaper      :: Maybe Word
+    , eventEbook      :: Maybe Word
     , onlinePaperOnly :: Maybe Word
-    , onlinePaper :: Maybe Word
-    , onlineEbook :: Maybe Word
+    , onlinePaper     :: Maybe Word
+    , onlineEbook     :: Maybe Word
     }
-  deriving Show
+  deriving (Show, Eq, Ord)
 
 -- https://ogp.me/
 data Ogp =
   Ogp
-    { title :: Text
-    , typ :: OgpType
-    , image :: Text
-    , url :: Text
+    { title       :: Text
+    , typ         :: OgpType
+    , image       :: Text
+    , url         :: Text
     , description :: Maybe Text
-    , locale :: Maybe Text
+    , locale      :: Maybe Text
     }
   deriving Show
 

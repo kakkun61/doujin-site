@@ -11,11 +11,11 @@ build:
 
 .PHONY: lint
 lint:
-	hlint app content
+	hlint lib app content
 
 .PHONY: format
 format:
-	$(PWSH) -Command '& { Get-ChildItem -Path app, content -Include *.hs -Recurse | ForEach-Object { stylish-haskell --inplace $$_ } }'
+	$(PWSH) -Command '& { Get-ChildItem -Path lib, app, content -Include *.hs -Recurse | ForEach-Object { stylish-haskell --inplace $$_ } }'
 
 .PHONY: serve
 serve: generate

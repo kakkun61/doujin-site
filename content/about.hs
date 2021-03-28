@@ -3,6 +3,7 @@
 
 import           Data
 import qualified Layout as L
+import qualified Site
 
 import Lucid
 
@@ -13,8 +14,8 @@ render path =
       Ogp
         title
         Article
-        (L.siteUrl <> "/favicon.ico")
-        (L.siteUrl <> "/" <> path)
+        (Site.url <> "/favicon.ico")
+        (Site.url <> "/" <> path)
         Nothing
         (Just "ja_JP")
     title = "「趣味はデバッグ……」とは"

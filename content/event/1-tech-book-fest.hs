@@ -1,30 +1,28 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import qualified Book
 import           Data
 import qualified Event
-import qualified Layout as L
+import qualified Layout      as L
 import qualified Publication
 import qualified Site
 
-import Lucid
 import qualified Data.Map.Strict as M
+import           Lucid
 
 render path = do
-  let
-  L.top (L.ogp ogp) $ L.book book events (Just content)
-  pure book
+  L.top (L.ogp ogp) $ L.event event books (Just content)
+  pure event
   where
     ogp =
       Ogp
-        (Book.title book)
+        (Event.title event)
         Article
-        (Site.url <> Book.image book)
+        (Site.url <> "/favicon.ico")
         (Site.url <> "/" <> path)
-        (Just $ Book.description book)
+        Nothing
         (Just "ja_JP")
-    book = Book.introductionYesod1
-    Just events = M.lookup book Publication.events
+    event = Event.techBookFest
+    Just books = M.lookup event Publication.books
     content = do
       "インプレス R&D よりネクストパブリッシングで商業化されました。"
       a_ [href_ "/introduction-yesod-commercial.html"] "商業版"

@@ -2,7 +2,7 @@
 
 module Main (main) where
 
-import Data (Book)
+import Data (Book, Event)
 
 import           Control.Exception            (Exception (displayException))
 import           Control.Monad.IO.Class       (MonadIO (liftIO))
@@ -33,6 +33,7 @@ action = do
   cname
   bs <- books
   index bs
+  events
   style
   images
 
@@ -55,11 +56,20 @@ book path = do
   b <- lucid ("book" </> path) dest dest
   pure (b, dest)
   where
-    dest = path' -<.> "html"
-    path' = dropOrder path
-    dropOrder ('-':r) = r
-    dropOrder (_:r)   = dropOrder r
-    dropOrder []      = error "dropOrder: does not contain '-'"
+    dest = dropOrder path -<.> "html"
+
+events :: Shake.Action ()
+events = do
+  sources <- reverse <$> Shake.getDirectoryFiles "content/event" ["*"]
+  es <- for sources event
+  lucid "events.hs" "events.html" ("events.html", es)
+
+event :: FilePath -> Shake.Action  (Event, FilePath)
+event path = do
+  e <- lucid ("event" </> path) dest dest
+  pure (e, dest)
+  where
+    dest = dropOrder path -<.> "html"
 
 lucid :: forall p r. (Show p, Typeable r) => FilePath -> FilePath -> p -> Shake.Action r
 lucid source destination param = do
@@ -71,7 +81,7 @@ lucid source destination param = do
     Hint.setImports ["Data.Functor.Identity", "Lucid", "Data.Text"]
     Hint.interpret ("render (" ++ show param ++ ")") (Hint.as :: Lucid.Html r)
   case result of
-    Left e  -> do
+    Left e -> do
       liftIO $ hPutStrLn stderr $ displayException e
       fail "interpret"
     Right html -> do
@@ -91,3 +101,9 @@ images = do
 
 cname :: Shake.Action ()
 cname = Shake.copyFileChanged "content/CNAME" "out/CNAME"
+
+dropOrder :: String -> String
+dropOrder path =
+  case dropWhile (/= '-') path of
+    '-':r -> r
+    _     -> error "dropOrder: does not contain '-'"

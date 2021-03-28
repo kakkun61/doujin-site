@@ -5,19 +5,14 @@
 
 module Layout where
 
-import Data
+import           Data
+import qualified Site
 
 import qualified Data.Foldable as F
 import           Data.String   (IsString (fromString))
 import           Data.Text     (Text)
 import           Lucid
 import qualified Lucid.Base    as Lucid
-
-siteName :: IsString s => s
-siteName = "趣味はデバッグ……"
-
-siteUrl :: Text
-siteUrl = "https://doujin.kakkun61.com"
 
 top :: Html () -> Html () -> Html ()
 top head content = do
@@ -33,7 +28,7 @@ top head content = do
     body_ $ do
       header_ [class_ "site-header", role_ "banner"] $ do
         div_ [class_ "header-wrapper"] $ do
-          a_ [class_ "site-title", rel_ "author", href_ "/"] siteName
+          a_ [class_ "site-title", rel_ "author", href_ "/"] Site.name
           nav_ [class_ "site-nav"] $ do
             input_ [type_ "checkbox", id_ "nav-trigger", class_ "nav-trigger"]
             label_ [for_ "nav-trigger"] $ do
@@ -46,7 +41,8 @@ top head content = do
                   , "</svg>"]
 
             div_ [class_ "trigger"] $ do
-              a_ [class_ "page-link", href_ "/about.html"] $ "「" <> siteName <> "」とは"
+              a_ [class_ "page-link", href_ "/events.html"] "イベント"
+              a_ [class_ "page-link", href_ "/about.html"] $ "「" <> Site.name <> "」とは"
               -- a_ [class_ "page-link", href_ "/feed.xml"] "RSS"
 
       main_ [class_ "page-content"] $ do
@@ -62,15 +58,14 @@ top head content = do
         " | "
         a_ [href_ "/credit.html"] "OSS"
 
-book :: Book -> Maybe (Html ()) -> Html ()
-book Book { title, bookImage, description, events, authors, price, sample, onlineSell } content = do
+book :: Book -> [Event] -> Maybe (Html ()) -> Html ()
+book Book { title, image, description, authors, price, sample, onlineSell } events content = do
   article_ [class_ "page"] $ do
-
     div_ $ do
       h1_ [class_ "book-title"] $ toHtml title
 
       div_ [class_ "book-info"] $ do
-        div_ [class_ "book-image"] $ img_ [src_ bookImage, alt_ "book front", class_ "book-front"]
+        div_ [class_ "book-image"] $ img_ [src_ image, alt_ "book front", class_ "book-front"]
 
         div_ [class_ "book-detail"] $ do
           p_ $ toHtml description
@@ -91,7 +86,7 @@ book Book { title, bookImage, description, events, authors, price, sample, onlin
                   " "
                   a_ [href_ $ "https://twitter.com/" <> fromString twitter] $ do
                     span_ [class_ "twitter-icon"] ""
-                    "@" <> fromString twitter
+                    "@" <> toHtml twitter
 
           table_ [class_ "book-price"] $ do
             tbody_ $ do
@@ -99,23 +94,23 @@ book Book { title, bookImage, description, events, authors, price, sample, onlin
               whenJust eventPaper $ \eventPaper ->
                 tr_ $ do
                   td_ "紙＋電子（即売会）"
-                  td_ [class_ "price"] $ "¥" <> fromString (show eventPaper)
+                  td_ [class_ "price"] $ "¥" <> toHtml (show eventPaper)
               whenJust eventEbook $ \eventEbook ->
                 tr_ $ do
                   td_ "電子（即売会）"
-                  td_ [class_ "price"] $ "¥" <> fromString (show eventEbook)
+                  td_ [class_ "price"] $ "¥" <> toHtml (show eventEbook)
               whenJust onlinePaperOnly $ \onlinePaperOnly ->
                 tr_ $ do
                   td_ "紙（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> fromString (show onlinePaperOnly)
+                  td_ [class_ "price"] $ "¥" <> toHtml (show onlinePaperOnly)
               whenJust onlinePaper $ \onlinePaper ->
                 tr_ $ do
                   td_ "紙＋電子（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> fromString (show onlinePaper)
+                  td_ [class_ "price"] $ "¥" <> toHtml (show onlinePaper)
               whenJust onlineEbook $ \onlineEbook ->
                 tr_ $ do
                   td_ "電子（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> fromString (show onlineEbook)
+                  td_ [class_ "price"] $ "¥" <> toHtml (show onlineEbook)
 
           div_ [class_ "book-actions"] $ do
             whenJust sample $ \sample ->
@@ -126,6 +121,12 @@ book Book { title, bookImage, description, events, authors, price, sample, onlin
       whenJust content $ \content ->
         div_ [class_ "content"] $ do
           content
+
+event :: Event -> [Book] -> Maybe (Html ()) -> Html ()
+event Event { title } books content = do
+  article_ [class_ "page"] $ do
+    div_ $ do
+      h1_ [class_ "event-title"] $ toHtml title
 
 page :: Text -> Html () -> Html ()
 page title content = do

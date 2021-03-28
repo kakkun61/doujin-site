@@ -1,43 +1,28 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+import qualified Book
 import           Data
-import qualified Layout as L
+import qualified Data.Map.Strict as M
+import qualified Layout          as L
+import qualified Publication
+import qualified Site
 
 import Lucid
 
 render path = do
-  L.top (L.ogp ogp) $ L.book book (Just content)
+  L.top (L.ogp ogp) $ L.book book events (Just content)
   pure book
   where
     ogp =
       Ogp
-        title
+        (Book.title book)
         Article
-        (L.siteUrl <> image)
-        (L.siteUrl <> "/" <> path)
-        (Just description)
+        (Site.url <> Book.image book)
+        (Site.url <> "/" <> path)
+        (Just $ Book.description book)
         (Just "ja_JP")
-    book =
-      Book
-        title
-        image
-        description
-        events
-        authors
-        price
-        Nothing
-        (Just "https://kakkun61.booth.pm/items/829369")
-    title = "手続き Haskell"
-    image = "/procedural-haskell.jpg"
-    description = "Haskell の手続きプログラミングの側面について解説した本です。"
-    events =
-      [ Event "技術書典 4" "2018.04.22" "アキバスクエア" "き34"
-      , Event "技術書典 5" "2019.10.08" "池袋サンシャインシティ" "か61"
-      , Event "技術書典 6" "2019.04.14" "池袋サンシャインシティ" "こ13"
-      , Event "技術書典 7" "2019.09.22" "池袋サンシャインシティ" "し02D"
-      ]
-    authors = [Author "岡本和樹" $ Just "kakkun61"]
-    price = Price (Just 500) (Just 300) Nothing Nothing (Just 500)
+    book = Book.proceduralHaskell
+    Just events = M.lookup book Publication.events
     content = do
       h2_ "対象読者"
       ul_ $ do
