@@ -1,0 +1,40 @@
+cradle:
+  cabal:
+    - path: "./lib"
+      component: "lib:doujin-site"
+
+    - path: "./app/gen.hs"
+      component: "doujin-site:exe:gen"
+
+    - path: "content/lib"
+      component: "lib:content"
+
+    - path: "content/book/1-introduction-yesod-1.hs"
+      component: "content:exe:introduction-yesod-1"
+
+    - path: "content/book/2-introduction-yesod.hs"
+      component: "content:exe:introduction-yesod"
+
+    - path: "content/book/3-procedural-haskell.hs"
+      component: "content:exe:procedural-haskell"
+
+    - path: "content/book/4-introduction-yesod-commercial.hs"
+      component: "content:exe:introduction-yesod-commercial"
+
+    - path: "content/book/5-type-reconstruction.hs"
+      component: "content:exe:type-reconstruction"
+
+    - path: "content/event/1-tech-book-fest.hs"
+      component: "content:exe:tech-book-fest"
+
+    - path: "content/./index.hs"
+      component: "content:exe:index"
+
+    - path: "content/./events.hs"
+      component: "content:exe:events"
+
+    - path: "content/./about.hs"
+      component: "content:exe:about"
+
+    - path: "content/./credit.hs"
+      component: "content:exe:credit"
