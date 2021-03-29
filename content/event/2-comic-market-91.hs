@@ -21,7 +21,7 @@ render path = do
         (Site.url <> "/" <> path)
         Nothing
         (Just "ja_JP")
-    event = Event.techBookFest
+    event = Event.comicMarket91
     Just books = M.lookup event Publication.books
 
 main = undefined

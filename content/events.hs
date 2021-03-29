@@ -17,15 +17,15 @@ render (path, events) =
     (L.ogp ogp)
     $ div_ [class_ "home"] $ do
         ul_ [class_ "event-list"] $ do
-          F.for_ events $ \(event@Event { title }, path) -> do
+          F.for_ events $ \(event@Event { title, date }, path) -> do
             let Just books = M.lookup event Publication.books
             li_ $ do
-              h3_ $
-                a_ [class_ "post-link", href_ path] $ toHtml title
-              div_ [class_ "justify-bottom"] $ do
+              h3_ $ a_ [class_ "post-link", href_ path] $ toHtml title
+              p_ $ toHtml date
+              div_ $ do
                 ul_ [] $ do
-                  F.for_ books $ \Book { title } -> do
-                    li_ [] $ toHtml title
+                  F.for_ books $ \Book { title, id } -> do
+                    li_ $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
                     " "
   where
     ogp =

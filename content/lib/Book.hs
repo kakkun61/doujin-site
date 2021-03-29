@@ -12,11 +12,22 @@ module Book
 
 import qualified Author
 import           Data
+import qualified Data.List as L
+
+books :: [Book]
+books =
+  [ introductionYesod1
+  , introductionYesod
+  , proceduralHaskell
+  , introductionYesodCommercial
+  , typeReconstruction
+  ]
 
 introductionYesod1 :: Book
 introductionYesod1 =
   Book
     { title = "遠回りして学ぶ Yesod 入門（上）"
+    , id = "introduction-yesod-1"
     , image = "/introduction-yesod-1-front.png"
     , description = "入門書程度の内容の Haskell を理解した人がウェブアプリケーションを作れるようになる手助けをする本です。"
     , authors = [Author.kakkun61]
@@ -29,6 +40,7 @@ introductionYesod :: Book
 introductionYesod =
   Book
     { title = "遠回りして学ぶ Yesod 入門"
+    , id = "introduction-yesod"
     , image = "/introduction-yesod-front.png"
     , description = "入門書程度の内容の Haskell を理解した人がウェブアプリケーションフレームワーク Yesod を使うときに手助けになるような内容です。"
     , authors = [Author.kakkun61, Author.syocy]
@@ -41,6 +53,7 @@ proceduralHaskell :: Book
 proceduralHaskell =
   Book
     { title = "手続き Haskell"
+    , id = "procedural-haskell"
     , image = "/procedural-haskell.jpg"
     , description = "Haskell の手続きプログラミングの側面について解説した本です。"
     , authors = [Author.kakkun61]
@@ -53,6 +66,7 @@ introductionYesodCommercial :: Book
 introductionYesodCommercial =
   Book
     { title = "Haskell で作る Web アプリケーション"
+    , id = "introduction-yesod-commercial"
     , image = "/introduction-yesod-commercial.jpg"
     , description = "入門書程度の内容の Haskell を理解した人がウェブアプリケーションフレームワーク Yesod を使うときに手助けになるような内容です。"
     , authors = [Author.kakkun61, Author.osanai]
@@ -65,6 +79,7 @@ typeReconstruction :: Book
 typeReconstruction =
   Book
     { title = "俺々言語にだって型推論が欲しい！"
+    , id = "type-reconstruction"
     , image = "/type-reconstruction.png"
     , description = "型推論器の作り方について解説した本です。"
     , authors = [Author.kakkun61, Author.syocy]
@@ -72,3 +87,9 @@ typeReconstruction =
     , sample = Nothing
     , onlineSell = Just "https://kakkun61.booth.pm/items/1317485"
     }
+
+instance Ord Book where
+  compare a b =
+    case (L.elemIndex a books, L.elemIndex b books) of
+      (Just i, Just j) -> compare i j
+      _                -> error $ show a ++ ", " ++ show b

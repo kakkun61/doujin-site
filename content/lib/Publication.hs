@@ -8,6 +8,7 @@ import Book
 import Data
 import Event
 
+import qualified Data.List       as L
 import           Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
 
@@ -24,4 +25,4 @@ events :: Map Book [Event]
 events = M.fromList list
 
 books :: Map Event [Book]
-books = foldr (\(book, events) map -> foldr (\event -> M.insertWith (++) event [book]) map events) M.empty list
+books = foldr (\(book, events) map -> foldr (\event -> M.insertWith (\a b -> reverse $ L.sort $ a ++ b) event [book]) map events) M.empty list

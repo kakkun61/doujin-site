@@ -19,12 +19,11 @@ render (path, books) =
           F.for_ books $ \(book@Book { title, image }, path) -> do
             let Just events = M.lookup book Publication.events
             li_ $ do
-              h3_ $
-                a_ [class_ "post-link", href_ path] $ toHtml title
+              h3_ $ a_ [class_ "post-link", href_ path] $ toHtml title
               div_ [class_ "justify-bottom"] $ do
                 ul_ [class_ "event-badges"] $ do
-                  F.for_ events $ \Event { title } -> do
-                    li_ [class_ "event-badge"] $ toHtml title
+                  F.for_ events $ \Event { title, id } -> do
+                    li_ [class_ "event-badge"] $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
                     " "
                 a_ [href_ path] $ img_ [src_ image, alt_ "book image", class_ "home-book-front"]
   where

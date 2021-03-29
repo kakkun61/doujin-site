@@ -1,4 +1,4 @@
-.book-list {
+.book-list, .event-list {
     margin-left: 0;
     list-style: none;
     display: flex;
@@ -8,7 +8,7 @@
     margin-bottom: 0;
 }
 
-.book-list > li {
+.book-list > li, .event-list > li {
     display: flex;
     flex-flow: column;
     padding: 20px;
@@ -52,6 +52,10 @@ img.home-book-front {
     line-height: 100%;
 }
 
+.event-badge > a {
+    color: inherit;
+}
+
 .event-badges {
     margin-bottom: 10px;
     margin-left: 0px;
@@ -59,12 +63,12 @@ img.home-book-front {
 }
 
 @media (min-width: 400px) {
-    .book-list {
+    .book-list, .event-list {
         margin-left: 17.5px;
         margin-right: 17.5px;
     }
 
-    .book-list > li {
+    .book-list > li, .event-list > li {
         width: 300px;
         margin-left: 12.5px;
         margin-right: 12.5px;
@@ -72,12 +76,12 @@ img.home-book-front {
 }
 
 @media (min-width: 340px) and (max-width: 400px) {
-    .book-list {
+    .book-list, .event-list {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .book-list > li {
+    .book-list > li, .event-list > li {
         width: 300px;
         margin-left: 5px;
         margin-right: 5px;
@@ -85,7 +89,7 @@ img.home-book-front {
 }
 
 @media (max-width: 340px) {
-    .book-list > li {
+    .book-list > li, .event-list > li {
         width: auto;
         margin-left: 5px;
         margin-right: 5px;

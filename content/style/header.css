@@ -6,3 +6,7 @@
 .site-header {
     background-color: hsla(0, 0%, 100%, 0.3);
 }
+
+.site-title {
+    white-space: nowrap;
+}

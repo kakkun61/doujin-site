@@ -14,6 +14,7 @@ import Data.Text (Text)
 data Book =
   Book
     { title       :: Text
+    , id          :: Text
     , image       :: Text
     , description :: Text
     , authors     :: [Author]
@@ -21,16 +22,20 @@ data Book =
     , sample      :: Maybe Text
     , onlineSell  :: Maybe Text
     }
-  deriving (Show, Eq, Ord)
+  deriving (Show, Eq)
 
 data Event =
   Event
-    { title :: Text
-    , date  :: Text
-    , place :: Text
-    , table :: Text
+    { title     :: Text
+    , id        :: Text
+    , date      :: Text
+    , place     :: Text
+    , table     :: Text
+    , circleCut :: Text
+    , url       :: Text
+    , circleUrl :: Text
     }
-  deriving (Show, Eq, Ord)
+  deriving (Show, Eq)
 
 data Author =
   Author

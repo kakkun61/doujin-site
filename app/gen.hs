@@ -90,7 +90,7 @@ lucid source destination param = do
 
 style :: Shake.Action ()
 style = do
-  let sources = (\n -> "content/style" </> n <> ".css") <$> ["minima", "home", "book", "header", "footer", "main"]
+  let sources = (\n -> "content/style" </> n <> ".css") <$> ["minima", "list", "book", "header", "footer", "main"]
   contents <- for sources Shake.readFile'
   Shake.writeFile' "out/style.css" $ mconcat contents
 

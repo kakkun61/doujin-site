@@ -14,25 +14,30 @@ article.page {
     margin-right: auto;
 }
 
-.book-info {
+.book-info, .event-info {
     display: flex;
     flex-flow: row wrap;
 }
 
-.book-image {
+.book-image, .event-image {
     width: 300px;
 }
 
-img.book-front {
+img.book-front, img.circle-cut {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.book-detail {
+.book-detail, .event-detail {
     display: flex;
     flex-flow: column;
     margin-top: 0;
+}
+
+.event-meta {
+    list-style: none;
+    margin-left: 0;
 }
 
 .book-events > ul {
@@ -71,7 +76,7 @@ img.book-front {
     text-align: right;
 }
 
-.book-actions {
+.book-actions, .event-actions {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -88,7 +93,7 @@ img.book-front {
         margin-right: 5px;
     }
 
-    .book-image {
+    .book-image, .event-image {
         width: auto;
         margin-left: auto;
         margin-right: auto;
@@ -102,20 +107,20 @@ img.book-front {
         margin-right: 30px;
     }
 
-    .book-image {
+    .book-image, .event-image {
         margin-left: auto;
         margin-right: auto;
     }
 }
 
 @media (min-width: 730px) {
-    .book-image {
+    .book-image, .event-image {
         margin-right: 25px;
     }
 }
 
 @media (max-width: 730px) {
-    .book-detail {
+    .book-detail, .event-detail {
         width: 100%;
         margin-top: 20px;
     }
@@ -127,7 +132,7 @@ img.book-front {
 }
 
 @media (min-width: 730px) and (max-width: 1000px) {
-    .book-detail {
+    .book-detail, .event-detail {
         width: calc(100vw - 435px);
     }
 
@@ -137,7 +142,7 @@ img.book-front {
 }
 
 @media (min-width: 1000px) {
-    .book-detail {
+    .book-detail, .event-detail {
         width: 565px;
     }
 

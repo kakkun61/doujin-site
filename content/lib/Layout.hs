@@ -71,8 +71,8 @@ book Book { title, image, description, authors, price, sample, onlineSell } even
           p_ $ toHtml description
 
           div_ [class_ "book-events"] $ do
-            F.for_ events $ \Event { title, date, place, table } -> do
-              span_ [class_ "event-badge"] $ toHtml title
+            F.for_ events $ \Event { title, id, date, place, table } -> do
+              span_ [class_ "event-badge"] $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
               ul_ $ do
                 li_ $ toHtml date
                 li_ $ toHtml place
@@ -123,10 +123,27 @@ book Book { title, image, description, authors, price, sample, onlineSell } even
           content
 
 event :: Event -> [Book] -> Maybe (Html ()) -> Html ()
-event Event { title } books content = do
+event Event { title, date, place, table, circleCut, url, circleUrl } books content = do
   article_ [class_ "page"] $ do
     div_ $ do
       h1_ [class_ "event-title"] $ toHtml title
+
+      div_ [class_ "event-info"] $ do
+        div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
+
+        div_ [class_ "event-detail"] $ do
+          ul_ [class_ "event-meta"] $ do
+            li_ $ toHtml date
+            li_ $ toHtml place
+            li_ $ toHtml table
+
+          ul_ [class_ "event-books"] $ do
+            F.for_ books $ \Book { title, id } -> do
+              li_ $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
+
+          div_ [class_ "book-actions"] $ do
+            a_ [class_ "button", href_ url] "イベントサイト"
+            a_ [class_ "button", href_ circleUrl] "サークルページ"
 
 page :: Text -> Html () -> Html ()
 page title content = do

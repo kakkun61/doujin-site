@@ -58,6 +58,36 @@ executable tech-book-fest
   hs-source-dirs:   event
   main-is:          1-tech-book-fest.hs
 
+executable comic-market-91
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          2-commit-market-91.hs
+
+executable tech-book-fest-2
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          3-tech-book-fest-2.hs
+
+executable tech-book-fest-4
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          4-tech-book-fest-4.hs
+
+executable tech-book-fest-5
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          5-tech-book-fest-5.hs
+
+executable tech-book-fest-6
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          6-tech-book-fest-6.hs
+
+executable tech-book-fest-7
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          7-tech-book-fest-7.hs
+
 executable index
   import:           executable
   hs-source-dirs:   .
