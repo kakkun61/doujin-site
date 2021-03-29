@@ -27,7 +27,7 @@ cradle:
     - path: "content/event/1-tech-book-fest.hs"
       component: "content:exe:tech-book-fest"
 
-    - path: "content/event/2-commit-market-91.hs"
+    - path: "content/event/2-comic-market-91.hs"
       component: "content:exe:comic-market-91"
 
     - path: "content/event/3-tech-book-fest-2.hs"

@@ -61,7 +61,7 @@ executable tech-book-fest
 executable comic-market-91
   import:           executable
   hs-source-dirs:   event
-  main-is:          2-commit-market-91.hs
+  main-is:          2-comic-market-91.hs
 
 executable tech-book-fest-2
   import:           executable
