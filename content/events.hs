@@ -14,6 +14,7 @@ import qualified Publication
 
 render (path, events) =
   L.top
+    ("イベント | " <> Site.name)
     (L.ogp ogp)
     $ div_ [class_ "home"] $ do
         ul_ [class_ "event-list"] $ do

@@ -14,16 +14,16 @@ import           Data.Text     (Text)
 import           Lucid
 import qualified Lucid.Base    as Lucid
 
-top :: Html () -> Html () -> Html ()
-top head content = do
+top :: Text -> Html () -> Html () -> Html ()
+top title head content = do
   doctype_
   html_ [lang_ "ja"] $ do
     head_ $ do
       meta_ [charset_ "utf-8"]
-      meta_ [httpEquiv_ "X-UA-Compatible", content_ "IE=edge"]
       meta_ [name_ "viewport", content_ "width=device-width, initial-scale=1"]
       link_ [rel_ "stylesheet", href_ "/style.css"]
       -- link_ [rel_ "alternate", type_ "application/rss+xml", title_ siteName, href_ "/feed.xml"]
+      title_ $ toHtml title
       head
     body_ $ do
       header_ [class_ "site-header", role_ "banner"] $ do

@@ -13,6 +13,7 @@ import           Lucid
 
 render (path, books) =
   L.top
+    Site.name
     (L.ogp ogp)
     $ div_ [class_ "home"] $ do
         ul_ [class_ "book-list"] $ do

@@ -12,7 +12,7 @@ import qualified Data.Map.Strict as M
 
 render path = do
   let
-  L.top (L.ogp ogp) $ L.book book events (Just content)
+  L.top (Book.title book <> " | " <> Site.name) (L.ogp ogp) $ L.book book events (Just content)
   pure book
   where
     ogp =

@@ -8,7 +8,7 @@ import qualified Site
 import Lucid
 
 render path =
-  L.top (L.ogp ogp) $ L.page title content
+  L.top (title <> " | " <> Site.name) (L.ogp ogp) $ L.page title content
   where
     ogp =
       Ogp

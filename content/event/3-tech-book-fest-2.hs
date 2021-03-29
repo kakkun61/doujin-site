@@ -10,7 +10,7 @@ import qualified Data.Map.Strict as M
 import           Lucid
 
 render path = do
-  L.top (L.ogp ogp) $ L.event event books Nothing
+  L.top (Event.title event <> " | " <> Site.name) (L.ogp ogp) $ L.event event books Nothing
   pure event
   where
     ogp =

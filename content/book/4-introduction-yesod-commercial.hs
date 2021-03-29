@@ -10,7 +10,7 @@ import qualified Site
 import Lucid
 
 render path = do
-  L.top (L.ogp ogp) $ L.book book events (Just content)
+  L.top (Book.title book <> " | " <> Site.name) (L.ogp ogp) $ L.book book events (Just content)
   pure book
   where
     ogp =
