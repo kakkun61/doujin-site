@@ -31,7 +31,7 @@ data Event =
     , date      :: Text
     , place     :: Text
     , table     :: Text
-    , circleCut :: Text
+    , circleCut :: Maybe Text
     , url       :: Text
     , circleUrl :: Text
     }

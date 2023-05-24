@@ -129,7 +129,9 @@ event Event { title, date, place, table, circleCut, url, circleUrl } books conte
       h1_ [class_ "event-title"] $ toHtml title
 
       div_ [class_ "event-info"] $ do
-        div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
+        case circleCut of
+          Just circleCut -> div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
+          Nothing -> pure ()
 
         div_ [class_ "event-detail"] $ do
           ul_ [class_ "event-meta"] $ do

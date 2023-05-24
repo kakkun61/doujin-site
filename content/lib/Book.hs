@@ -8,6 +8,7 @@ module Book
   , proceduralHaskell
   , introductionYesodCommercial
   , typeReconstruction
+  , darkRoomPrinting
   ) where
 
 import qualified Author
@@ -21,6 +22,7 @@ books =
   , proceduralHaskell
   , introductionYesodCommercial
   , typeReconstruction
+  , darkRoomPrinting
   ]
 
 introductionYesod1 :: Book
@@ -86,6 +88,19 @@ typeReconstruction =
     , price = Price (Just 500) (Just 300) Nothing Nothing (Just 500)
     , sample = Nothing
     , onlineSell = Just "https://kakkun61.booth.pm/items/1317485"
+    }
+
+darkRoomPrinting :: Book
+darkRoomPrinting =
+  Book
+    { title = "令和白黒写真暗室印刷"
+    , id = "dark-room-printing"
+    , image = "/dark-room-printing.jpg"
+    , description = "令和の時代に暗室を作って白黒フィルム写真を印刷するにはどうするのか。"
+    , authors = [Author.kakkun61]
+    , price = Price (Just 500) (Just 300) Nothing Nothing (Just 500)
+    , sample = Nothing
+    , onlineSell = Just "https://techbookfest.org/product/8VwMyT5QgmfkGvdAYWuRhJ"
     }
 
 instance Ord Book where

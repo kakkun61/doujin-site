@@ -53,6 +53,11 @@ executable type-reconstruction
   hs-source-dirs:   book
   main-is:          5-type-reconstruction.hs
 
+executable dark-room-printing
+  import:           executable
+  hs-source-dirs:   book
+  main-is:          6-dark-room-printing.hs
+
 executable tech-book-fest
   import:           executable
   hs-source-dirs:   event
@@ -87,6 +92,11 @@ executable tech-book-fest-7
   import:           executable
   hs-source-dirs:   event
   main-is:          7-tech-book-fest-7.hs
+
+executable tech-book-fest-14
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          14-tech-book-fest-14.hs
 
 executable index
   import:           executable

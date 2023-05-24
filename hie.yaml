@@ -24,6 +24,9 @@ cradle:
     - path: "content/book/5-type-reconstruction.hs"
       component: "content:exe:type-reconstruction"
 
+    - path: "content/book/6-dark-room-printing.hs"
+      component: "content:exe:dark-room-printing"
+
     - path: "content/event/1-tech-book-fest.hs"
       component: "content:exe:tech-book-fest"
 
@@ -44,6 +47,9 @@ cradle:
 
     - path: "content/event/7-tech-book-fest-7.hs"
       component: "content:exe:tech-book-fest-7"
+
+    - path: "content/event/14-tech-book-fest-14.hs"
+      component: "content:exe:tech-book-fest-14"
 
     - path: "content/./index.hs"
       component: "content:exe:index"

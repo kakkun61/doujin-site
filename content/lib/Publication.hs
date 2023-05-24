@@ -19,6 +19,7 @@ list =
   , (proceduralHaskell, [techBookFest4, techBookFest5, techBookFest6, techBookFest7])
   , (introductionYesodCommercial, [techBookFest5, techBookFest6])
   , (typeReconstruction, [techBookFest6, techBookFest7])
+  , (darkRoomPrinting, [techBookFest14])
   ]
 
 events :: Map Book [Event]
