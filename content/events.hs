@@ -9,6 +9,7 @@ import qualified Site
 
 import qualified Data.Foldable   as F
 import qualified Data.Map.Strict as M
+import           Data.Maybe
 import           Lucid
 import qualified Publication
 
@@ -19,7 +20,7 @@ render (path, events) =
     $ div_ [class_ "home"] $ do
         ul_ [class_ "event-list"] $ do
           F.for_ events $ \(event@Event { title, date }, path) -> do
-            let Just books = M.lookup event Publication.books
+            let books = fromMaybe [] $ M.lookup event Publication.books
             li_ $ do
               h3_ $ a_ [class_ "post-link", href_ path] $ toHtml title
               p_ $ toHtml date

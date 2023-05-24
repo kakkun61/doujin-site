@@ -31,67 +31,72 @@ library
 executable introduction-yesod-1
   import:           executable
   hs-source-dirs:   book
-  main-is:          1-introduction-yesod-1.hs
+  main-is:          01-introduction-yesod-1.hs
 
 executable introduction-yesod
   import:           executable
   hs-source-dirs:   book
-  main-is:          2-introduction-yesod.hs
+  main-is:          02-introduction-yesod.hs
 
 executable procedural-haskell
   import:           executable
   hs-source-dirs:   book
-  main-is:          3-procedural-haskell.hs
+  main-is:          03-procedural-haskell.hs
 
 executable introduction-yesod-commercial
   import:           executable
   hs-source-dirs:   book
-  main-is:          4-introduction-yesod-commercial.hs
+  main-is:          04-introduction-yesod-commercial.hs
 
 executable type-reconstruction
   import:           executable
   hs-source-dirs:   book
-  main-is:          5-type-reconstruction.hs
+  main-is:          05-type-reconstruction.hs
 
 executable dark-room-printing
   import:           executable
   hs-source-dirs:   book
-  main-is:          6-dark-room-printing.hs
+  main-is:          06-dark-room-printing.hs
 
 executable tech-book-fest
   import:           executable
   hs-source-dirs:   event
-  main-is:          1-tech-book-fest.hs
+  main-is:          01-tech-book-fest.hs
 
 executable comic-market-91
   import:           executable
   hs-source-dirs:   event
-  main-is:          2-comic-market-91.hs
+  main-is:          02-comic-market-91.hs
 
 executable tech-book-fest-2
   import:           executable
   hs-source-dirs:   event
-  main-is:          3-tech-book-fest-2.hs
+  main-is:          03-tech-book-fest-2.hs
 
 executable tech-book-fest-4
   import:           executable
   hs-source-dirs:   event
-  main-is:          4-tech-book-fest-4.hs
+  main-is:          04-tech-book-fest-4.hs
 
 executable tech-book-fest-5
   import:           executable
   hs-source-dirs:   event
-  main-is:          5-tech-book-fest-5.hs
+  main-is:          05-tech-book-fest-5.hs
 
 executable tech-book-fest-6
   import:           executable
   hs-source-dirs:   event
-  main-is:          6-tech-book-fest-6.hs
+  main-is:          06-tech-book-fest-6.hs
 
 executable tech-book-fest-7
   import:           executable
   hs-source-dirs:   event
-  main-is:          7-tech-book-fest-7.hs
+  main-is:          07-tech-book-fest-7.hs
+
+executable tech-book-fest-8
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          08-tech-book-fest-8.hs
 
 executable tech-book-fest-14
   import:           executable

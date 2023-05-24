@@ -3,12 +3,12 @@
 import qualified Book
 import           Data
 import qualified Event
-import qualified Layout as L
+import qualified Layout      as L
 import qualified Publication
 import qualified Site
 
-import Lucid
 import qualified Data.Map.Strict as M
+import           Lucid
 
 render path = do
   let

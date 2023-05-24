@@ -9,44 +9,47 @@ cradle:
     - path: "content/lib"
       component: "lib:content"
 
-    - path: "content/book/1-introduction-yesod-1.hs"
+    - path: "content/book/01-introduction-yesod-1.hs"
       component: "content:exe:introduction-yesod-1"
 
-    - path: "content/book/2-introduction-yesod.hs"
+    - path: "content/book/02-introduction-yesod.hs"
       component: "content:exe:introduction-yesod"
 
-    - path: "content/book/3-procedural-haskell.hs"
+    - path: "content/book/03-procedural-haskell.hs"
       component: "content:exe:procedural-haskell"
 
-    - path: "content/book/4-introduction-yesod-commercial.hs"
+    - path: "content/book/04-introduction-yesod-commercial.hs"
       component: "content:exe:introduction-yesod-commercial"
 
-    - path: "content/book/5-type-reconstruction.hs"
+    - path: "content/book/05-type-reconstruction.hs"
       component: "content:exe:type-reconstruction"
 
-    - path: "content/book/6-dark-room-printing.hs"
+    - path: "content/book/06-dark-room-printing.hs"
       component: "content:exe:dark-room-printing"
 
-    - path: "content/event/1-tech-book-fest.hs"
+    - path: "content/event/01-tech-book-fest.hs"
       component: "content:exe:tech-book-fest"
 
-    - path: "content/event/2-comic-market-91.hs"
+    - path: "content/event/02-comic-market-91.hs"
       component: "content:exe:comic-market-91"
 
-    - path: "content/event/3-tech-book-fest-2.hs"
+    - path: "content/event/03-tech-book-fest-2.hs"
       component: "content:exe:tech-book-fest-2"
 
-    - path: "content/event/4-tech-book-fest-4.hs"
+    - path: "content/event/04-tech-book-fest-4.hs"
       component: "content:exe:tech-book-fest-4"
 
-    - path: "content/event/5-tech-book-fest-5.hs"
+    - path: "content/event/05-tech-book-fest-5.hs"
       component: "content:exe:tech-book-fest-5"
 
-    - path: "content/event/6-tech-book-fest-6.hs"
+    - path: "content/event/06-tech-book-fest-6.hs"
       component: "content:exe:tech-book-fest-6"
 
-    - path: "content/event/7-tech-book-fest-7.hs"
+    - path: "content/event/07-tech-book-fest-7.hs"
       component: "content:exe:tech-book-fest-7"
+
+    - path: "content/event/08-tech-book-fest-8.hs"
+      component: "content:exe:tech-book-fest-8"
 
     - path: "content/event/14-tech-book-fest-14.hs"
       component: "content:exe:tech-book-fest-14"

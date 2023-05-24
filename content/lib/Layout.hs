@@ -13,6 +13,7 @@ import           Data.String   (IsString (fromString))
 import           Data.Text     (Text)
 import           Lucid
 import qualified Lucid.Base    as Lucid
+import Data.Maybe (fromMaybe)
 
 top :: Text -> Html () -> Html () -> Html ()
 top title head content = do
@@ -131,7 +132,7 @@ event Event { title, date, place, table, circleCut, url, circleUrl } books conte
       div_ [class_ "event-info"] $ do
         case circleCut of
           Just circleCut -> div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
-          Nothing -> pure ()
+          Nothing        -> pure ()
 
         div_ [class_ "event-detail"] $ do
           ul_ [class_ "event-meta"] $ do
@@ -146,6 +147,8 @@ event Event { title, date, place, table, circleCut, url, circleUrl } books conte
           div_ [class_ "book-actions"] $ do
             a_ [class_ "button", href_ url] "イベントサイト"
             a_ [class_ "button", href_ circleUrl] "サークルページ"
+
+          fromMaybe (pure ()) content
 
 page :: Text -> Html () -> Html ()
 page title content = do

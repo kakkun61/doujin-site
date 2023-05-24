@@ -10,6 +10,7 @@ module Event
   , techBookFest5
   , techBookFest6
   , techBookFest7
+  , techBookFest8
   , techBookFest14
   ) where
 
@@ -25,6 +26,7 @@ events =
   , techBookFest5
   , techBookFest6
   , techBookFest7
+  , techBookFest8
   , techBookFest14
   ]
 
@@ -117,6 +119,19 @@ techBookFest7 =
     , circleCut = Just "/circle-cut-3.png"
     , url = "https://techbookfest.org/event/tbf07"
     , circleUrl = "https://techbookfest.org/event/tbf07/circle/5662395955412992"
+    }
+
+techBookFest8 :: Event
+techBookFest8 =
+  Event
+    { title = "技術書典 8"
+    , id = "tech-book-fest-8"
+    , date = "2020.02.29-2020.03.01"
+    , place = "池袋サンシャインシティ"
+    , table = "1日め お35"
+    , circleCut = Just "/circle-cut-4.png"
+    , url = "https://techbookfest.org/event/tbf08"
+    , circleUrl = "https://techbookfest.org/event/tbf08/circle/5160117913780224"
     }
 
 techBookFest14 :: Event

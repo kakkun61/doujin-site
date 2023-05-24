@@ -64,7 +64,7 @@ events = do
   es <- for sources event
   lucid "events.hs" "events.html" ("events.html", es)
 
-event :: FilePath -> Shake.Action  (Event, FilePath)
+event :: FilePath -> Shake.Action (Event, FilePath)
 event path = do
   e <- lucid ("event" </> path) dest dest
   pure (e, dest)
