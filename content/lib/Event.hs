@@ -13,6 +13,9 @@ module Event
   , techBookFest8
   , techBookFest9
   , techBookFest10
+  , techBookFest11
+  , techBookFest12
+  , techBookFest13
   , techBookFest14
   ) where
 
@@ -31,6 +34,9 @@ events =
   , techBookFest8
   , techBookFest9
   , techBookFest10
+  , techBookFest11
+  , techBookFest12
+  , techBookFest13
   , techBookFest14
   ]
 
@@ -164,13 +170,52 @@ techBookFest10 =
     , circleUrl = "https://techbookfest.org/event/tbf10/circle/5156076934660096"
     }
 
+techBookFest11 :: Event
+techBookFest11 =
+  Event
+    { title = "技術書典 11"
+    , id = "tech-book-fest-11"
+    , date = "2021.06.10-2021.07.25"
+    , place = "オンライン"
+    , table = "ネットの海 4479"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf11"
+    , circleUrl = "https://techbookfest.org/organization/5658962204557312"
+    }
+
+techBookFest12 :: Event
+techBookFest12 =
+  Event
+    { title = "技術書典 12"
+    , id = "tech-book-fest-12"
+    , date = "2022.01.22-2022.01.30"
+    , place = "オンライン"
+    , table = "ネットの海 918d"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf12"
+    , circleUrl = "https://techbookfest.org/organization/5658962204557312"
+    }
+
+techBookFest13 :: Event
+techBookFest13 =
+  Event
+    { title = "技術書典 13"
+    , id = "tech-book-fest-13"
+    , date = "2022.09.10-2022.09.25 (2022.09.11)"
+    , place = "オンライン＆池袋サンシャインシティ"
+    , table = "い07"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf13"
+    , circleUrl = "https://techbookfest.org/organization/5658962204557312"
+    }
+
 techBookFest14 :: Event
 techBookFest14 =
   Event
     { title = "技術書典 14"
     , id = "tech-book-fest-14"
-    , date = "2023.05.21"
-    , place = "池袋サンシャインシティ"
+    , date = "2023.05.20-2023.06.04 (2023.05.21)"
+    , place = "オンライン＆池袋サンシャインシティ"
     , table = "お03"
     , circleCut = Nothing
     , url = "https://techbookfest.org/event/tbf14"
