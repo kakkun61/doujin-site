@@ -12,6 +12,7 @@ module Event
   , techBookFest7
   , techBookFest8
   , techBookFest9
+  , techBookFest10
   , techBookFest14
   ) where
 
@@ -29,6 +30,7 @@ events =
   , techBookFest7
   , techBookFest8
   , techBookFest9
+  , techBookFest10
   , techBookFest14
   ]
 
@@ -147,6 +149,19 @@ techBookFest9 =
     , circleCut = Nothing
     , url = "https://techbookfest.org/event/tbf09"
     , circleUrl = "https://techbookfest.org/event/tbf09/circle/5688509568385024"
+    }
+
+techBookFest10 :: Event
+techBookFest10 =
+  Event
+    { title = "技術書典 10"
+    , id = "tech-book-fest-10"
+    , date = "2020.12.26-2021.01.06"
+    , place = "オンライン"
+    , table = "ネットの海 721a"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf10"
+    , circleUrl = "https://techbookfest.org/event/tbf10/circle/5156076934660096"
     }
 
 techBookFest14 :: Event
