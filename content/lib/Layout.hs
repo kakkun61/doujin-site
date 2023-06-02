@@ -153,7 +153,7 @@ event Event { title, date, place, table, circleCut, url, circleUrl } books conte
 page :: Text -> Html () -> Html ()
 page title content = do
   article_ [class_ "page"] $ do
-    div_ $ do
+    div_ [style_ "width: 100%;"] $ do
       h1_ [class_ "page-title"] $ toHtml title
       div_ [style_ "margin: 20px;"] content
 
