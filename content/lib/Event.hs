@@ -11,6 +11,7 @@ module Event
   , techBookFest6
   , techBookFest7
   , techBookFest8
+  , techBookFest9
   , techBookFest14
   ) where
 
@@ -27,6 +28,7 @@ events =
   , techBookFest6
   , techBookFest7
   , techBookFest8
+  , techBookFest9
   , techBookFest14
   ]
 
@@ -132,6 +134,19 @@ techBookFest8 =
     , circleCut = Just "/circle-cut-4.png"
     , url = "https://techbookfest.org/event/tbf08"
     , circleUrl = "https://techbookfest.org/event/tbf08/circle/5160117913780224"
+    }
+
+techBookFest9 :: Event
+techBookFest9 =
+  Event
+    { title = "技術書典 9"
+    , id = "tech-book-fest-9"
+    , date = "2020.09.12-2020.12.22"
+    , place = "オンライン"
+    , table = "ネットの海 ecbf"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf09"
+    , circleUrl = "https://techbookfest.org/event/tbf09/circle/5688509568385024"
     }
 
 techBookFest14 :: Event
