@@ -40,11 +40,6 @@ img.book-front, img.circle-cut {
     margin-left: 0;
 }
 
-.book-events > ul {
-    list-style: none;
-    margin-top: 5px;
-}
-
 .book-authors {
     list-style: none;
     margin-left: 0;

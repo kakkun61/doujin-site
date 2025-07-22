@@ -71,13 +71,10 @@ book Book { title, image, description, authors, prices, buttonLinks } events con
         div_ [class_ "book-detail"] $ do
           p_ $ toHtml description
 
-          div_ [class_ "book-events"] $ do
-            F.for_ events $ \Event { title, id, date, place, table } -> do
-              span_ [class_ "event-badge"] $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
-              ul_ $ do
-                li_ $ toHtml date
-                li_ $ toHtml place
-                li_ $ toHtml table
+          ul_ [class_ "event-badges"] $ do
+            F.for_ events $ \Event { title, id } -> do
+              li_ [class_ "event-badge"] $ a_ [href_ $ "/" <> id <> ".html"] $ toHtml title
+              " "
 
           ul_ [class_ "book-authors"] $ do
             F.for_ authors $ \Author { name, twitter } -> do
