@@ -60,7 +60,7 @@ top title head content = do
         a_ [href_ "/credit.html"] "OSS"
 
 book :: Book -> [Event] -> Maybe (Html ()) -> Html ()
-book Book { title, image, description, authors, price, sample, onlineSell } events content = do
+book Book { title, image, description, authors, prices, buttonLinks } events content = do
   article_ [class_ "page"] $ do
     div_ $ do
       h1_ [class_ "book-title"] $ toHtml title
@@ -91,33 +91,14 @@ book Book { title, image, description, authors, price, sample, onlineSell } even
 
           table_ [class_ "book-price"] $ do
             tbody_ $ do
-              let Price { eventPaper, eventEbook, onlinePaperOnly, onlinePaper, onlineEbook } = price
-              whenJust eventPaper $ \eventPaper ->
+              F.for_ prices $ \(style, value) ->
                 tr_ $ do
-                  td_ "紙＋電子（即売会）"
-                  td_ [class_ "price"] $ "¥" <> toHtml (show eventPaper)
-              whenJust eventEbook $ \eventEbook ->
-                tr_ $ do
-                  td_ "電子（即売会）"
-                  td_ [class_ "price"] $ "¥" <> toHtml (show eventEbook)
-              whenJust onlinePaperOnly $ \onlinePaperOnly ->
-                tr_ $ do
-                  td_ "紙（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> toHtml (show onlinePaperOnly)
-              whenJust onlinePaper $ \onlinePaper ->
-                tr_ $ do
-                  td_ "紙＋電子（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> toHtml (show onlinePaper)
-              whenJust onlineEbook $ \onlineEbook ->
-                tr_ $ do
-                  td_ "電子（オンライン）"
-                  td_ [class_ "price"] $ "¥" <> toHtml (show onlineEbook)
+                  td_ $ toHtml style
+                  td_ [class_ "price"] $ "¥" <> toHtml (show value)
 
           div_ [class_ "book-actions"] $ do
-            whenJust sample $ \sample ->
-              a_ [class_ "button", href_ sample] "サンプル PDF"
-            whenJust onlineSell $ \onlineSell ->
-              a_ [class_ "button", href_ onlineSell] "オンライン販売"
+            F.for_ buttonLinks $ \(text, url) ->
+              a_ [class_ "button", href_ url] $ toHtml text
 
       whenJust content $ \content ->
         div_ [class_ "content"] $ do

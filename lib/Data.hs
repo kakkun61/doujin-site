@@ -4,7 +4,6 @@ module Data
   ( Book (..)
   , Event (..)
   , Author (..)
-  , Price (..)
   , Ogp (..)
   , OgpType (..)
   ) where
@@ -18,9 +17,8 @@ data Book =
     , image       :: Text
     , description :: Text
     , authors     :: [Author]
-    , price       :: Price
-    , sample      :: Maybe Text
-    , onlineSell  :: Maybe Text
+    , prices      :: [(Text, Word)]
+    , buttonLinks :: [(Text, Text)]
     }
   deriving (Show, Eq)
 
@@ -41,16 +39,6 @@ data Author =
   Author
     { name    :: Text
     , twitter :: Maybe String
-    }
-  deriving (Show, Eq, Ord)
-
-data Price =
-  Price
-    { eventPaper      :: Maybe Word
-    , eventEbook      :: Maybe Word
-    , onlinePaperOnly :: Maybe Word
-    , onlinePaper     :: Maybe Word
-    , onlineEbook     :: Maybe Word
     }
   deriving (Show, Eq, Ord)
 
