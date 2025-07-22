@@ -30,7 +30,7 @@ jobs:
       - id: setup
         uses: haskell/actions/setup@v2
         with:
-          ghc-version: '9.2.7'
+          ghc-version: '9.12.2'
           cabal-version: latest
       - run: |
           cabal configure --enable-tests --enable-benchmarks --disable-documentation
