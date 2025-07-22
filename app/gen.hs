@@ -23,7 +23,7 @@ main :: IO ()
 main =
   withUtf8 $
     Shake.shakeArgsForward
-      (Shake.forwardOptions Shake.shakeOptions { Shake.shakeLintInside = ["fsatrace"] })
+      (Shake.forwardOptions Shake.shakeOptions { Shake.shakeLintInside = ["fsatrace"], Shake.shakeThreads = 0 })
       action
 
 action :: Shake.Action ()
