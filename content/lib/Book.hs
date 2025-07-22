@@ -9,6 +9,7 @@ module Book
   , introductionYesodCommercial
   , typeReconstruction
   , darkRoomPrinting
+  , monadDrill
   ) where
 
 import qualified Author
@@ -24,6 +25,7 @@ books =
   , introductionYesodCommercial
   , typeReconstruction
   , darkRoomPrinting
+  , monadDrill
   ]
 
 introductionYesod1 :: Book
@@ -121,6 +123,22 @@ darkRoomPrinting =
         , onlineEbookPrice 500
         ]
     , buttonLinks = [onlineSellButtonLink "https://techbookfest.org/product/8VwMyT5QgmfkGvdAYWuRhJ"]
+    }
+
+monadDrill :: Book
+monadDrill =
+  Book
+    { title = "モナドドリル"
+    , id = "monad-drill"
+    , image = "/monad-drill.jpg"
+    , description = "モナドの読解力と利用力がつく！"
+    , authors = [Author.kakkun61]
+    , prices =
+        [ eventPaperPrice 1000
+        , eventEbookPrice 500
+        , onlineEbookPrice 700
+        ]
+    , buttonLinks = [onlineSellButtonLink "https://techbookfest.org/product/jWEWpVGasBBr1fGYSrA9f8"]
     }
 
 instance Ord Book where

@@ -17,6 +17,7 @@ module Event
   , techBookFest12
   , techBookFest13
   , techBookFest14
+  , techBookFest18
   ) where
 
 import           Data
@@ -38,6 +39,7 @@ events =
   , techBookFest12
   , techBookFest13
   , techBookFest14
+  , techBookFest18
   ]
 
 techBookFest :: Event
@@ -219,6 +221,19 @@ techBookFest14 =
     , table = "お03"
     , circleCut = Nothing
     , url = "https://techbookfest.org/event/tbf14"
+    , circleUrl = "https://techbookfest.org/organization/5658962204557312"
+    }
+
+techBookFest18 :: Event
+techBookFest18 =
+  Event
+    { title = "技術書典 18"
+    , id = "tech-book-fest-18"
+    , date = "2025.05.31-2025.06.15 (2025.06.01)"
+    , place = "オンライン＆池袋サンシャインシティ"
+    , table = "き10"
+    , circleCut = Nothing
+    , url = "https://techbookfest.org/event/tbf18"
     , circleUrl = "https://techbookfest.org/organization/5658962204557312"
     }
 
