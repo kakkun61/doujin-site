@@ -9,11 +9,11 @@ import           Data
 import qualified Site
 
 import qualified Data.Foldable as F
+import           Data.Maybe    (fromMaybe)
 import           Data.String   (IsString (fromString))
 import           Data.Text     (Text)
 import           Lucid
 import qualified Lucid.Base    as Lucid
-import Data.Maybe (fromMaybe)
 
 top :: Text -> Html () -> Html () -> Html ()
 top title head content = do
@@ -34,7 +34,7 @@ top title head content = do
             input_ [type_ "checkbox", id_ "nav-trigger", class_ "nav-trigger"]
             label_ [for_ "nav-trigger"] $ do
               span_ [class_ "menu-icon"] $ do
-                toHtmlRaw @Text $ mconcat
+                toHtmlRaw @Text $ F.fold
                   [ "<svg viewBox=\"0 0 18 15\" width=\"18px\" height=\"15px\">"
                   , "<path fill=\"#424242\" d=\"M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z\"/>"
                   , "<path fill=\"#424242\" d=\"M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z\"/>"

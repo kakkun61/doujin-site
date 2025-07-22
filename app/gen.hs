@@ -6,7 +6,7 @@ import Data (Book, Event)
 
 import           Control.Exception            (Exception (displayException))
 import           Control.Monad.IO.Class       (MonadIO (liftIO))
-import           Data.Foldable                (for_)
+import           Data.Foldable                (Foldable (fold), for_)
 import           Data.Functor.Identity        (Identity (runIdentity))
 import           Data.Traversable             (for)
 import           Data.Typeable                (Typeable)
@@ -92,7 +92,7 @@ style :: Shake.Action ()
 style = do
   let sources = (\n -> "content/style" </> n <> ".css") <$> ["minima", "list", "book", "header", "footer", "main"]
   contents <- for sources Shake.readFile'
-  Shake.writeFile' "out/style.css" $ mconcat contents
+  Shake.writeFile' "out/style.css" $ fold contents
 
 images :: Shake.Action ()
 images = do
