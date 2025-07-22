@@ -22,12 +22,15 @@ serve: generate
 	$(SERVE) out
 
 .PHONY: clean
-clean: clean-content
-	cabal clean
+clean: clean-content clean-cabal
 
 .PHONY: clean-content
 clean-content:
-	$(PWSH) -Command '& { Remove-Item -Path out -Recurse -Force }'
+	-$(PWSH) -Command '& { Remove-Item -Path out -Recurse -Force }'
+
+.PHONY: clean-cabal
+clean-cabal:
+	cabal clean
 
 .PHONY: targets
 targets:
