@@ -28,7 +28,8 @@ library
   import:              common
   hs-source-dirs:      lib
   exposed-modules:     Data
-  build-depends:       lucid,
+  build-depends:       binary,
+                       lucid,
                        text
 
 executable gen
@@ -40,3 +41,6 @@ executable gen
                        lucid,
                        shake,
                        with-utf8
+  ghc-options:         -threaded
+                       -rtsopts "-with-rtsopts=-I0 -qg"
+                       -- Shake recommendation https://hackage.haskell.org/package/shake-0.19.8/docs/Development-Shake.html#g:2

@@ -11,7 +11,6 @@ import qualified Data.Map.Strict as M
 import           Lucid
 
 render path = do
-  let
   L.top (Book.title book <> " | " <> Site.name) (L.ogp ogp) $ L.book book events (Just content)
   pure book
   where

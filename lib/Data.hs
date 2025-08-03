@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric         #-}
+{-# LANGUAGE DerivingStrategies    #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 
 module Data
@@ -8,7 +10,9 @@ module Data
   , OgpType (..)
   ) where
 
-import Data.Text (Text)
+import Data.Binary  (Binary)
+import Data.Text    (Text)
+import GHC.Generics (Generic)
 
 data Book =
   Book
@@ -20,7 +24,9 @@ data Book =
     , prices      :: [(Text, Word)]
     , buttonLinks :: [(Text, Text)]
     }
-  deriving (Show, Eq)
+  deriving stock (Show, Eq, Generic)
+
+instance Binary Book
 
 data Event =
   Event
@@ -33,14 +39,18 @@ data Event =
     , url       :: Text
     , circleUrl :: Text
     }
-  deriving (Show, Eq)
+  deriving stock (Show, Eq, Generic)
+
+instance Binary Event
 
 data Author =
   Author
     { name    :: Text
     , twitter :: Maybe String
     }
-  deriving (Show, Eq, Ord)
+  deriving stock (Show, Eq, Ord, Generic)
+
+instance Binary Author
 
 -- https://ogp.me/
 data Ogp =

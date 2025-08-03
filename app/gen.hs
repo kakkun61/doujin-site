@@ -1,4 +1,10 @@
+{-# LANGUAGE DeriveGeneric       #-}
+{-# LANGUAGE DerivingStrategies  #-}
+{-# LANGUAGE FlexibleInstances   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE StandaloneDeriving  #-}
+
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 module Main (main) where
 
@@ -7,26 +13,27 @@ import Data (Book, Event)
 import           Control.Exception            (Exception (displayException))
 import           Control.Monad.IO.Class       (MonadIO (liftIO))
 import           Data.Foldable                (Foldable (fold), for_)
-import           Data.Functor.Identity        (Identity (runIdentity))
 import           Data.Traversable             (for)
 import           Data.Typeable                (Typeable)
 import qualified Development.Shake            as Shake
+import qualified Development.Shake.Classes    as Shake
 import           Development.Shake.FilePath   ((-<.>), (</>))
 import qualified Development.Shake.Forward    as Shake
+import           GHC.Generics                 (Generic)
+import           GHC.Stack                    (HasCallStack)
 import           Language.Haskell.Interpreter (OptionVal ((:=)))
 import qualified Language.Haskell.Interpreter as Hint
-import qualified Lucid
 import           Main.Utf8                    (withUtf8)
 import           System.IO                    (hPutStrLn, stderr)
 
-main :: IO ()
+main :: HasCallStack => IO ()
 main =
   withUtf8 $
     Shake.shakeArgsForward
-      (Shake.forwardOptions Shake.shakeOptions { Shake.shakeLintInside = ["fsatrace"], Shake.shakeThreads = 0 })
+      (Shake.forwardOptions Shake.shakeOptions { Shake.shakeLintInside = [""], Shake.shakeThreads = 0 })
       action
 
-action :: Shake.Action ()
+action :: HasCallStack => Shake.Action ()
 action = do
   about
   credit
@@ -37,73 +44,86 @@ action = do
   style
   images
 
-index :: [(Book, FilePath)] -> Shake.Action ()
+index :: HasCallStack => [(Book, FilePath)] -> Shake.Action ()
 index books = lucid "index.hs" "index.html" ("index.html", books)
 
-about :: Shake.Action ()
+about :: HasCallStack => Shake.Action ()
 about = lucid "about.hs" "about.html" "about.html"
 
-credit :: Shake.Action ()
+credit :: HasCallStack => Shake.Action ()
 credit = lucid "credit.hs" "credit.html" "credit.html"
 
-books :: Shake.Action [(Book, FilePath)]
+books :: HasCallStack => Shake.Action [(Book, FilePath)]
 books = do
   sources <- reverse <$> Shake.getDirectoryFiles "content/book" ["*"]
   for sources book
 
-book :: FilePath -> Shake.Action (Book, FilePath)
+book :: HasCallStack => FilePath -> Shake.Action (Book, FilePath)
 book path = do
   b <- lucid ("book" </> path) dest dest
   pure (b, dest)
   where
     dest = dropOrder path -<.> "html"
 
-events :: Shake.Action ()
+events :: HasCallStack => Shake.Action ()
 events = do
   sources <- reverse <$> Shake.getDirectoryFiles "content/event" ["*"]
   es <- for sources event
   lucid "events.hs" "events.html" ("events.html", es)
 
-event :: FilePath -> Shake.Action (Event, FilePath)
+event :: HasCallStack => FilePath -> Shake.Action (Event, FilePath)
 event path = do
   e <- lucid ("event" </> path) dest dest
   pure (e, dest)
   where
     dest = dropOrder path -<.> "html"
 
-lucid :: forall p r. (Show p, Typeable r) => FilePath -> FilePath -> p -> Shake.Action r
+lucid
+  :: forall p r
+   . (Show p, Typeable p, Shake.Binary p, Show r, Typeable r, Shake.Binary r, HasCallStack)
+  => FilePath -> FilePath -> p -> Shake.Action r
 lucid source destination param = do
   libs <- Shake.getDirectoryFiles "content/lib" ["*.hs"]
-  result <- liftIO $ Hint.runInterpreter $ do
-    Hint.set [Hint.languageExtensions := [Hint.DuplicateRecordFields, Hint.OverloadedStrings]]
+  let hsFiles = "lib/Data.hs" : ("content" </> source) : (("content/lib" </>) <$> libs)
+  Shake.need hsFiles
+  result <- Shake.cacheActionWith ("hint: " ++ source) param $ Shake.traced "hint" $ Hint.runInterpreter $ do
     Hint.loadModules $ ("content" </> source) : (("content/lib" </>) <$> libs)
+    Hint.set [Hint.languageExtensions := [Hint.DuplicateRecordFields, Hint.OverloadedStrings]]
+    Hint.setImports ["Prelude", "Data.Functor.Identity"]
     Hint.setTopLevelModules ["Main"]
-    Hint.setImports ["Data.Functor.Identity", "Lucid", "Data.Text"]
-    Hint.interpret ("render (" ++ show param ++ ")") (Hint.as :: Lucid.Html r)
+    Hint.interpret ("let html = render (" ++ show param ++ ") in (Prelude.show html, runIdentity (evalHtmlT html))") (Hint.as :: (String, r))
   case result of
     Left e -> do
       liftIO $ hPutStrLn stderr $ displayException e
       fail "interpret"
-    Right html -> do
-      Shake.writeFile' ("out" </> destination) $ show html
-      pure $ runIdentity $ Lucid.evalHtmlT html
+    Right (s, r) -> do
+      Shake.writeFileChanged ("out" </> destination) s
+      pure r
 
-style :: Shake.Action ()
+style :: HasCallStack => Shake.Action ()
 style = do
   let sources = (\n -> "content/style" </> n <> ".css") <$> ["minima", "list", "book", "header", "footer", "main"]
   contents <- for sources Shake.readFile'
-  Shake.writeFile' "out/style.css" $ fold contents
+  Shake.writeFileChanged "out/style.css" $ fold contents
 
-images :: Shake.Action ()
+images :: HasCallStack => Shake.Action ()
 images = do
   sources <- Shake.getDirectoryFiles "content/image" ["*"]
   for_ sources $ \source -> Shake.copyFileChanged ("content/image" </> source) ("out" </> source)
 
-cname :: Shake.Action ()
+cname :: HasCallStack => Shake.Action ()
 cname = Shake.copyFileChanged "content/CNAME" "out/CNAME"
 
-dropOrder :: String -> String
+dropOrder :: HasCallStack => String -> String
 dropOrder path =
   case dropWhile (/= '-') path of
     '-':r -> r
     _     -> error "dropOrder: does not contain '-'"
+
+deriving stock instance Generic Hint.InterpreterError
+
+instance Shake.Binary Hint.InterpreterError
+
+deriving stock instance Generic Hint.GhcError
+
+instance Shake.Binary Hint.GhcError
