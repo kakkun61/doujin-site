@@ -10,9 +10,10 @@ module Data
   , OgpType (..)
   ) where
 
-import Data.Binary  (Binary)
-import Data.Text    (Text)
-import GHC.Generics (Generic)
+import Data.Binary   (Binary)
+import Data.Hashable (Hashable)
+import Data.Text     (Text)
+import GHC.Generics  (Generic)
 
 data Book =
   Book
@@ -27,6 +28,8 @@ data Book =
   deriving stock (Show, Eq, Generic)
 
 instance Binary Book
+
+instance Hashable Book
 
 data Event =
   Event
@@ -43,6 +46,8 @@ data Event =
 
 instance Binary Event
 
+instance Hashable Event
+
 data Author =
   Author
     { name    :: Text
@@ -51,6 +56,8 @@ data Author =
   deriving stock (Show, Eq, Ord, Generic)
 
 instance Binary Author
+
+instance Hashable Author
 
 -- https://ogp.me/
 data Ogp =

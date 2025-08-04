@@ -29,6 +29,7 @@ library
   hs-source-dirs:      lib
   exposed-modules:     Data
   build-depends:       binary,
+                       hashable,
                        lucid,
                        text
 

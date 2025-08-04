@@ -78,20 +78,22 @@ event path = do
   where
     dest = dropOrder path -<.> "html"
 
+-- Don't call this function in parallel, as GHCi has global locking.
 lucid
   :: forall p r
-   . (Show p, Typeable p, Shake.Binary p, Show r, Typeable r, Shake.Binary r, HasCallStack)
+   . (Show p, Shake.Hashable p, Show r, Typeable r, Shake.Binary r, HasCallStack)
   => FilePath -> FilePath -> p -> Shake.Action r
 lucid source destination param = do
   libs <- Shake.getDirectoryFiles "content/lib" ["*.hs"]
   let hsFiles = "lib/Data.hs" : ("content" </> source) : (("content/lib" </>) <$> libs)
-  Shake.need hsFiles
-  result <- Shake.cacheActionWith ("hint: " ++ source) param $ Shake.traced "hint" $ Hint.runInterpreter $ do
-    Hint.loadModules $ ("content" </> source) : (("content/lib" </>) <$> libs)
+  hsContents <- Shake.forP hsFiles Shake.readFile'
+  let hash = Shake.hash (hsContents, param)
+  result <- Shake.cacheActionWith ("hint: " ++ source) hash $ Shake.traced "hint" $ Hint.runInterpreter $ do
+    Hint.loadModules hsFiles
     Hint.set [Hint.languageExtensions := [Hint.DuplicateRecordFields, Hint.OverloadedStrings]]
     Hint.setImports ["Prelude", "Data.Functor.Identity"]
     Hint.setTopLevelModules ["Main"]
-    Hint.interpret ("let html = render (" ++ show param ++ ") in (Prelude.show html, runIdentity (evalHtmlT html))") (Hint.as :: (String, r))
+    Hint.interpret ("let html = render (" ++ show param ++ ") in (show html, runIdentity (evalHtmlT html))") (Hint.as :: (String, r))
   case result of
     Left e -> do
       liftIO $ hPutStrLn stderr $ displayException e
@@ -103,7 +105,7 @@ lucid source destination param = do
 style :: HasCallStack => Shake.Action ()
 style = do
   let sources = (\n -> "content/style" </> n <> ".css") <$> ["minima", "list", "book", "header", "footer", "main"]
-  contents <- for sources Shake.readFile'
+  contents <- Shake.forP sources Shake.readFile'
   Shake.writeFileChanged "out/style.css" $ fold contents
 
 images :: HasCallStack => Shake.Action ()
