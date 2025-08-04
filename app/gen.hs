@@ -91,8 +91,7 @@ lucid source destination param = do
   result <- Shake.cacheActionWith ("hint: " ++ source) hash $ Shake.traced "hint" $ Hint.runInterpreter $ do
     Hint.loadModules hsFiles
     Hint.set [Hint.languageExtensions := [Hint.DuplicateRecordFields, Hint.OverloadedStrings]]
-    Hint.setImports ["Prelude", "Data.Functor.Identity"]
-    Hint.setTopLevelModules ["Main"]
+    Hint.setImports ["Main", "Data", "Prelude", "Data.Functor.Identity", "Lucid"]
     Hint.interpret ("let html = render (" ++ show param ++ ") in (show html, runIdentity (evalHtmlT html))") (Hint.as :: (String, r))
   case result of
     Left e -> do
