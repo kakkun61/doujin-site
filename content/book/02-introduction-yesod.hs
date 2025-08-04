@@ -1,14 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module Main where
+
 import           Data
 import qualified Layout as L
 import qualified Site
 
 import qualified Book
 import qualified Data.Map.Strict as M
+import           Data.Text       (Text)
 import           Lucid
 import qualified Publication
 
+render :: Text -> Html Book
 render path = do
   L.top (Book.title book <> " | " <> Site.name) (L.ogp ogp) $ L.book book events (Just content)
   pure book

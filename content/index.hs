@@ -2,6 +2,8 @@
 {-# LANGUAGE NamedFieldPuns        #-}
 {-# LANGUAGE OverloadedStrings     #-}
 
+module Main where
+
 import           Data
 import qualified Layout      as L
 import qualified Publication
@@ -9,8 +11,10 @@ import qualified Site
 
 import           Data.Foldable   as F
 import qualified Data.Map.Strict as M
+import           Data.Text       (Text)
 import           Lucid
 
+render :: (Text, [(Book, Text)]) -> Html ()
 render (path, books) =
   L.top
     Site.name

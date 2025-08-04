@@ -1,11 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module Main where
+
 import           Data
 import qualified Layout as L
 import qualified Site
 
+import Data.Text
 import Lucid
 
+render :: Text -> Html ()
 render path =
   L.top (title <> " | " <> Site.name) (L.ogp ogp) $ L.page title content
   where

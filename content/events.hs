@@ -1,7 +1,8 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE NamedFieldPuns        #-}
 {-# LANGUAGE OverloadedStrings     #-}
 
-{-# LANGUAGE NamedFieldPuns        #-}
+module Main where
 
 import           Data
 import qualified Layout as L
@@ -10,9 +11,11 @@ import qualified Site
 import qualified Data.Foldable   as F
 import qualified Data.Map.Strict as M
 import           Data.Maybe
+import           Data.Text       (Text)
 import           Lucid
 import qualified Publication
 
+render :: (Text, [(Event, Text)]) -> Html ()
 render (path, events) =
   L.top
     ("イベント | " <> Site.name)
