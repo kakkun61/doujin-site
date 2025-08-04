@@ -58,6 +58,11 @@ executable dark-room-printing
   hs-source-dirs:   book
   main-is:          06-dark-room-printing.hs
 
+executable monad-drill
+  import:           executable
+  hs-source-dirs:   book
+  main-is:          07-monad-drill.hs
+
 executable tech-book-fest
   import:           executable
   hs-source-dirs:   event
@@ -102,6 +107,11 @@ executable tech-book-fest-14
   import:           executable
   hs-source-dirs:   event
   main-is:          14-tech-book-fest-14.hs
+
+executable tech-book-fest-18
+  import:           executable
+  hs-source-dirs:   event
+  main-is:          18-tech-book-fest-18.hs
 
 executable index
   import:           executable

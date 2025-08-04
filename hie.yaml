@@ -27,6 +27,9 @@ cradle:
     - path: "content/book/06-dark-room-printing.hs"
       component: "content:exe:dark-room-printing"
 
+    - path: "content/book/07-monad-drill.hs"
+      component: "content:exe:monad-drill"
+
     - path: "content/event/01-tech-book-fest.hs"
       component: "content:exe:tech-book-fest"
 
@@ -53,6 +56,9 @@ cradle:
 
     - path: "content/event/14-tech-book-fest-14.hs"
       component: "content:exe:tech-book-fest-14"
+
+    - path: "content/event/18-tech-book-fest-18.hs"
+      component: "content:exe:tech-book-fest-18"
 
     - path: "content/./index.hs"
       component: "content:exe:index"
