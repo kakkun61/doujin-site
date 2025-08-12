@@ -136,9 +136,13 @@ monadDrill =
     , prices =
         [ eventPaperPrice 1000
         , eventEbookPrice 500
+        , onlinePaperPrice 1200
         , onlineEbookPrice 700
         ]
-    , buttonLinks = [onlineSellButtonLink "https://techbookfest.org/product/jWEWpVGasBBr1fGYSrA9f8"]
+    , buttonLinks =
+        [ techBookFestSellButtonLink "https://techbookfest.org/product/jWEWpVGasBBr1fGYSrA9f8"
+        , boothSellButtonLink "https://kakkun61.booth.pm/items/7222359"
+        ]
     }
 
 instance Ord Book where
@@ -164,3 +168,9 @@ onlineEbookPrice price = ("電子（オンライン）", price)
 
 onlineSellButtonLink :: Text -> (Text, Text)
 onlineSellButtonLink url = ("オンライン販売", url)
+
+techBookFestSellButtonLink :: Text -> (Text, Text)
+techBookFestSellButtonLink url = ("オンライン販売（技術書典）", url)
+
+boothSellButtonLink :: Text -> (Text, Text)
+boothSellButtonLink url = ("オンライン販売（Booth）", url)
