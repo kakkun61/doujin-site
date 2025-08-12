@@ -50,8 +50,9 @@ instance Hashable Event
 
 data Author =
   Author
-    { name    :: Text
-    , twitter :: Maybe String
+    { name        :: Text
+    , twitter     :: Maybe String
+    , activityPub :: Maybe (String, String)
     }
   deriving stock (Show, Eq, Ord, Generic)
 

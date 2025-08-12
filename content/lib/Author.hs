@@ -6,13 +6,28 @@ module Author
   , osanai
   ) where
 
-import Data (Author (Author, name, twitter))
+import Data (Author (..))
 
 kakkun61 :: Author
-kakkun61 = Author { name = "岡本和樹" , twitter = Just "kakkun61" }
+kakkun61 =
+  Author
+    { name = "岡本和樹"
+    , twitter = Just "kakkun61"
+    , activityPub = Just ("kakkun61", "pawoo.net")
+    }
 
 syocy :: Author
-syocy = Author { name = "syocy", twitter = Just "syocy" }
+syocy =
+  Author
+    { name = "syocy"
+    , twitter = Just "syocy"
+    , activityPub = Nothing
+    }
 
 osanai :: Author
-osanai = Author { name = "小山内一由", twitter = Nothing}
+osanai =
+  Author
+    { name = "小山内一由"
+    , twitter = Nothing
+    , activityPub = Nothing
+    }
