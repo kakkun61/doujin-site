@@ -73,7 +73,10 @@ proceduralHaskell =
         , eventEbookPrice 300
         , onlineEbookPrice 500
         ]
-    , buttonLinks = [onlineSellButtonLink "https://kakkun61.booth.pm/items/829369"]
+    , buttonLinks =
+        [ techBookFestSellButtonLink "https://techbookfest.org/product/6046480204824576"
+        , boothSellButtonLink "https://kakkun61.booth.pm/items/829369"
+        ]
     }
 
 introductionYesodCommercial :: Book
@@ -106,7 +109,10 @@ typeReconstruction =
         , eventEbookPrice 300
         , onlineEbookPrice 500
         ]
-    , buttonLinks = [onlineSellButtonLink "https://kakkun61.booth.pm/items/1317485"]
+    , buttonLinks =
+        [ techBookFestSellButtonLink "https://techbookfest.org/product/5189254728646656"
+        , boothSellButtonLink "https://kakkun61.booth.pm/items/1317485"
+        ]
     }
 
 darkRoomPrinting :: Book
