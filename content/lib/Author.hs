@@ -6,14 +6,14 @@ module Author
   , osanai
   ) where
 
-import Data (Author (..))
+import Data (Author (..), ActivityPubUser (..))
 
 kakkun61 :: Author
 kakkun61 =
   Author
     { name = "岡本和樹"
     , twitter = Just "kakkun61"
-    , activityPub = Just ("kakkun61", "pawoo.net")
+    , activityPub = Just $ ActivityPubUser "kakkun61" "pawoo.net"
     }
 
 syocy :: Author

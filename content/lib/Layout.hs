@@ -14,6 +14,7 @@ import           Data.String   (IsString (fromString))
 import           Data.Text     (Text)
 import           Lucid
 import qualified Lucid.Base    as Lucid
+import qualified Data.Text as Text
 
 top :: Text -> Html () -> Html () -> Html ()
 top title head content = do
@@ -60,7 +61,7 @@ top title head content = do
         a_ [href_ "/credit.html"] "OSS"
 
 book :: Book -> [Event] -> Maybe (Html ()) -> Html ()
-book Book { title, image, description, authors, prices, buttonLinks } events content = do
+book Book { title, image = Path image, description, authors, prices, buttonLinks } events content = do
   article_ [class_ "page"] $ do
     div_ $ do
       h1_ [class_ "book-title"] $ toHtml title
@@ -77,12 +78,12 @@ book Book { title, image, description, authors, prices, buttonLinks } events con
               " "
 
           ul_ [class_ "book-authors"] $ do
-            F.for_ authors $ \Author { name, twitter } -> do
+            F.for_ authors $ \Author { name, twitter, activityPub } -> do
               li_ $ do
                 toHtml name
                 whenJust twitter $ \twitter -> do
                   " "
-                  a_ [href_ $ "https://twitter.com/" <> fromString twitter] $ do
+                  a_ [href_ $ "https://twitter.com/" <> fromString (Text.unpack twitter)] $ do
                     span_ [class_ "twitter-icon"] ""
                     "@" <> toHtml twitter
 
@@ -94,7 +95,7 @@ book Book { title, image, description, authors, prices, buttonLinks } events con
                   td_ [class_ "price"] $ "¥" <> toHtml (show value)
 
           div_ [class_ "book-actions"] $ do
-            F.for_ buttonLinks $ \(text, url) ->
+            F.for_ buttonLinks $ \(text, Url url) ->
               a_ [class_ "button", href_ url] $ toHtml text
 
       whenJust content $ \content ->
@@ -102,14 +103,14 @@ book Book { title, image, description, authors, prices, buttonLinks } events con
           content
 
 event :: Event -> [Book] -> Maybe (Html ()) -> Html ()
-event Event { title, date, place, table, circleCut, url, circleUrl } books content = do
+event Event { title, date, place, table, circleCut, url = Url url, circleUrl = Url circleUrl } books content = do
   article_ [class_ "page"] $ do
     div_ $ do
       h1_ [class_ "event-title"] $ toHtml title
 
       div_ [class_ "event-info"] $ do
         case circleCut of
-          Just circleCut -> div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
+          Just (Path circleCut) -> div_ [class_ "event-image"] $ img_ [src_ circleCut, alt_ "circle cut", class_ "circle-cut"]
           Nothing        -> pure ()
 
         div_ [class_ "event-detail"] $ do

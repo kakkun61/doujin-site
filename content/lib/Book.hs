@@ -172,11 +172,11 @@ onlinePaperPrice price = ("紙＋電子（オンライン）", price)
 onlineEbookPrice :: Word -> (Text, Word)
 onlineEbookPrice price = ("電子（オンライン）", price)
 
-onlineSellButtonLink :: Text -> (Text, Text)
+onlineSellButtonLink :: Url -> (Text, Url)
 onlineSellButtonLink url = ("オンライン販売", url)
 
-techBookFestSellButtonLink :: Text -> (Text, Text)
+techBookFestSellButtonLink :: Url -> (Text, Url)
 techBookFestSellButtonLink url = ("オンライン販売（技術書典）", url)
 
-boothSellButtonLink :: Text -> (Text, Text)
+boothSellButtonLink :: Url -> (Text, Url)
 boothSellButtonLink url = ("オンライン販売（Booth）", url)

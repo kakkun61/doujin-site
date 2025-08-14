@@ -21,7 +21,7 @@ render path = do
       Ogp
         (Book.title book)
         Article
-        (Site.url <> Book.image book)
+        (Site.url <> unPath (Book.image book))
         (Site.url <> "/" <> path)
         (Just $ Book.description book)
         (Just "ja_JP")

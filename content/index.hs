@@ -21,7 +21,7 @@ render (path, books) =
     (L.ogp ogp)
     $ div_ [class_ "home"] $ do
         ul_ [class_ "book-list"] $ do
-          F.for_ books $ \(book@Book { title, image }, path) -> do
+          F.for_ books $ \(book@Book { title, image = Path image }, path) -> do
             li_ $ do
               h3_ $ a_ [class_ "post-link", href_ path] $ toHtml title
               div_ [class_ "justify-bottom"] $ do
