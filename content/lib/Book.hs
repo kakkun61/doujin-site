@@ -76,6 +76,7 @@ proceduralHaskell =
     , buttonLinks =
         [ techBookFestSellButtonLink "https://techbookfest.org/product/6046480204824576"
         , boothSellButtonLink "https://kakkun61.booth.pm/items/829369"
+        , ("Zenn で読む", "https://zenn.dev/kakkun61/books/procedural-haskell")
         ]
     }
 
@@ -176,7 +177,7 @@ onlineSellButtonLink :: Url -> (Text, Url)
 onlineSellButtonLink url = ("オンライン販売", url)
 
 techBookFestSellButtonLink :: Url -> (Text, Url)
-techBookFestSellButtonLink url = ("オンライン販売（技術書典）", url)
+techBookFestSellButtonLink url = ("技術書典で買う", url)
 
 boothSellButtonLink :: Url -> (Text, Url)
-boothSellButtonLink url = ("オンライン販売（Booth）", url)
+boothSellButtonLink url = ("Booth で買う", url)
