@@ -40,6 +40,12 @@ render path = do
         br_ []
         "手を動かして使えるようになりましょう！"
       p_ "ソースコードは Haskell です"
+      p_ $ do
+        "『モナドドリル』グッズの販売を開始しました！"
+        br_ []
+        a_ [href_ "https://suzuri.jp/kakkun61/20841038/t-shirt/"] "『モナドドリル』グッズ販売ページ"
+        br_ []
+        "（2026.09.04 追記）"
       p_ $ a_ [href_ supportPageUrl] "サポートページ"
 
 main = undefined
